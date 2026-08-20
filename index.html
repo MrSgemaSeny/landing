@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
 <style>
   :root {
     --green: #00562D;
@@ -54,6 +55,7 @@
   .nav-links a:hover { color: var(--green); background: var(--green-05); }
   .nav-cta { display: flex; align-items: center; gap: .75rem; }
   .btn { display: inline-flex; align-items: center; gap: .4rem; padding: .6rem 1.4rem; border-radius: 999px; font-size: 14px; font-weight: 700; text-decoration: none; cursor: pointer; border: none; transition: all .2s; }
+  .btn svg { width: 16px; height: 16px; stroke-width: 2.2px; }
   .btn-ghost { background: transparent; color: var(--green); border: 1.5px solid var(--green-40); }
   .btn-ghost:hover { border-color: var(--green); background: var(--green-05); }
   .btn-solid { background: var(--green); color: var(--beige); }
@@ -124,6 +126,7 @@
   .mock-sidebar { background: #003d20; padding: 1rem .75rem; }
   .mock-logo { color: var(--beige); font-weight: 900; font-size: 13px; padding: .5rem .5rem 1rem; letter-spacing: -.3px; }
   .mock-nav-item { padding: .45rem .65rem; border-radius: 8px; font-size: 11px; color: rgba(245,245,220,.5); display: flex; align-items: center; gap: .5rem; margin-bottom: .15rem; }
+  .mock-nav-item svg { width: 13px; height: 13px; stroke-width: 2px; flex-shrink: 0; }
   .mock-nav-item.active { background: rgba(245,245,220,.15); color: var(--beige); }
   .mock-main { padding: 1rem; background: var(--beige); }
   .mock-header { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; margin-bottom: .75rem; color: var(--green); }
@@ -204,6 +207,7 @@
     display: flex; align-items: center; justify-content: center;
     font-size: 20px; margin-bottom: 1.25rem;
   }
+  .feat-icon svg { width: 24px; height: 24px; stroke-width: 2px; }
   .feat-card h3 { font-size: 17px; font-weight: 800; color: var(--green); margin-bottom: .5rem; }
   .feat-card p { font-size: 14px; color: var(--green-80); line-height: 1.7; }
   .feat-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: 1rem; }
@@ -236,7 +240,8 @@
   .roles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
   .role-card { background: var(--beige); border: 1px solid var(--green-10); border-radius: var(--r-xl); padding: 1.75rem; transition: all .2s; }
   .role-card:hover { border-color: var(--green-40); box-shadow: 0 8px 24px rgba(0,86,45,.08); }
-  .role-pill { display: inline-block; background: var(--green); color: var(--beige); font-size: 10px; font-weight: 800; padding: .25rem .65rem; border-radius: 999px; text-transform: uppercase; letter-spacing: .08em; margin-bottom: .75rem; }
+  .role-pill { display: inline-flex; align-items: center; gap: .3rem; background: var(--green); color: var(--beige); font-size: 10px; font-weight: 800; padding: .25rem .65rem; border-radius: 999px; text-transform: uppercase; letter-spacing: .08em; margin-bottom: .75rem; }
+  .role-pill svg { width: 12px; height: 12px; stroke-width: 2.2px; }
   .role-card h3 { font-size: 18px; font-weight: 900; text-transform: uppercase; letter-spacing: -.5px; color: var(--green); margin-bottom: .25rem; }
   .role-card .sub { font-size: 13px; color: var(--green-80); margin-bottom: 1.25rem; font-weight: 500; }
   .role-card ul { list-style: none; }
@@ -261,7 +266,7 @@
   .mod-list { list-style: none; }
   .mod-list li { font-size: 14px; color: var(--green); padding: .5rem 0; border-bottom: 1px solid var(--green-10); padding-left: 1.5rem; position: relative; font-weight: 500; }
   .mod-list li:last-child { border-bottom: none; }
-  .mod-list li::before { content: ''; position: absolute; left: 0; color: var(--green); font-weight: 900; }
+  .mod-list li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 900; }
   .mod-visual { background: var(--white); border: 1px solid var(--green-10); border-radius: var(--r-xl); padding: 1.5rem; }
   .mod-visual-title { font-size: 10px; font-weight: 800; color: var(--green-80); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 1rem; }
   .pipeline { display: flex; gap: .5rem; }
@@ -301,9 +306,9 @@
   .plan li { font-size: 13px; padding: .4rem 0; border-bottom: 1px solid; border-color: var(--green-10); padding-left: 1.4rem; position: relative; font-weight: 500; }
   .plan.featured li { border-color: rgba(245,245,220,.12); }
   .plan li:last-child { border-bottom: none; }
-  .plan li::before { content: ''; position: absolute; left: 0; font-weight: 900; color: var(--green); }
+  .plan li::before { content: '✓'; position: absolute; left: 0; font-weight: 900; color: var(--green); }
   .plan.featured li::before { color: var(--beige); }
-  .plan li.off::before { content: ''; opacity: .3; }
+  .plan li.off::before { content: '✕'; opacity: .4; }
   .plan li.off { opacity: .45; }
 
   /* ── CONTACT ── */
@@ -314,6 +319,7 @@
   .contact-meta { display: flex; flex-direction: column; gap: 1rem; }
   .contact-meta-item { display: flex; align-items: center; gap: .75rem; font-size: 14px; font-weight: 600; }
   .contact-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--green-10); border: 1px solid var(--green-10); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .contact-icon svg { width: 18px; height: 18px; color: var(--green); stroke-width: 2px; }
   .contact-form-wrap { background: var(--white); border: 1px solid var(--green-10); border-radius: var(--r-2xl); padding: 2rem; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
   .form-group { margin-bottom: .85rem; }
@@ -392,8 +398,8 @@
       <li><a href="#pricing">Тарифы</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="#contact" class="btn btn-ghost">Войти</a>
-      <a href="#contact" class="btn btn-solid">Демо</a>
+      <a href="#contact" class="btn btn-ghost"><i data-lucide="log-in"></i> Войти</a>
+      <a href="#contact" class="btn btn-solid"><i data-lucide="sparkles"></i> Демо</a>
     </div>
   </div>
 </nav>
@@ -408,8 +414,8 @@
       <h1>Ваша<br><em>CRM</em><br>для<br>бухгалтеров</h1>
       <p class="hero-sub">Полная замена Bitrix24, amoCRM и сторонних сервисов. Один кабинет — клиенты, задачи, документы, биллинг, обучение.</p>
       <div class="hero-actions">
-        <a href="#contact" class="btn btn-solid btn-lg">Оставить заявку</a>
-        <a href="#features" class="btn btn-ghost btn-lg">Смотреть возможности</a>
+        <a href="#contact" class="btn btn-solid btn-lg"><i data-lucide="arrow-right"></i> Оставить заявку</a>
+        <a href="#features" class="btn btn-ghost btn-lg"><i data-lucide="layers"></i> Смотреть возможности</a>
       </div>
       <div class="hero-stats">
         <div class="hero-stat"><strong>в 3×</strong><span>быстрее закрываете задачи</span></div>
@@ -430,12 +436,12 @@
         <div class="mock-body">
           <div class="mock-sidebar">
             <div class="mock-logo">ZhanFinance</div>
-            <div class="mock-nav-item active"> Обзор</div>
-            <div class="mock-nav-item"> CRM</div>
-            <div class="mock-nav-item"> Документы</div>
-            <div class="mock-nav-item"> Биллинг</div>
-            <div class="mock-nav-item"> Обучение</div>
-            <div class="mock-nav-item"> Чат</div>
+            <div class="mock-nav-item active"><i data-lucide="layout-dashboard"></i> Обзор</div>
+            <div class="mock-nav-item"><i data-lucide="kanban"></i> CRM</div>
+            <div class="mock-nav-item"><i data-lucide="file-text"></i> Документы</div>
+            <div class="mock-nav-item"><i data-lucide="credit-card"></i> Биллинг</div>
+            <div class="mock-nav-item"><i data-lucide="graduation-cap"></i> Обучение</div>
+            <div class="mock-nav-item"><i data-lucide="message-square"></i> Чат</div>
           </div>
           <div class="mock-main">
             <div class="mock-header">Обзор · Август 2025</div>
@@ -517,37 +523,37 @@
     <p class="section-sub">Никаких лишних кликов. Только то, что реально ускоряет работу.</p>
     <div class="features-grid">
       <div class="feat-card">
-        <div class="feat-icon"></div>
+        <div class="feat-icon"><i data-lucide="kanban"></i></div>
         <h3>CRM и воронка задач</h3>
         <p>Видите всех клиентов, задачи и статусы в одном месте. Каждый сотрудник работает только со своей очередью.</p>
         <div class="feat-tags"><span class="tag">Доска задач</span><span class="tag">Очередь</span><span class="tag">История</span></div>
       </div>
       <div class="feat-card">
-        <div class="feat-icon"></div>
+        <div class="feat-icon"><i data-lucide="file-text"></i></div>
         <h3>Документооборот</h3>
         <p>АВР, акты и договоры по шаблону за секунды. Документы хранятся в системе — клиент скачивает из своего кабинета.</p>
         <div class="feat-tags"><span class="tag">АВР</span><span class="tag">Акты</span><span class="tag">Шаблоны</span></div>
       </div>
       <div class="feat-card">
-        <div class="feat-icon"></div>
+        <div class="feat-icon"><i data-lucide="credit-card"></i></div>
         <h3>Биллинг и инвойсы</h3>
         <p>Выставляете счёт в два клика. Клиент получает PDF на почту и оплачивает через Kaspi Pay или Halyk Epay.</p>
         <div class="feat-tags"><span class="tag">Инвойсы</span><span class="tag">Подписки</span><span class="tag">Kaspi Pay</span></div>
       </div>
       <div class="feat-card">
-        <div class="feat-icon"></div>
+        <div class="feat-icon"><i data-lucide="graduation-cap"></i></div>
         <h3>LMS-обучение</h3>
         <p>Курсы → Разделы → Уроки. Автоматическая выдача сертификатов при 100% прохождении. Роли куратора и обучаемого.</p>
         <div class="feat-tags"><span class="tag">Курсы</span><span class="tag">Сертификаты</span><span class="tag">Прогресс</span></div>
       </div>
       <div class="feat-card">
-        <div class="feat-icon"></div>
+        <div class="feat-icon"><i data-lucide="message-square"></i></div>
         <h3>Real-time чат</h3>
         <p>Общаетесь с клиентами прямо в системе. Вся история переписки хранится рядом с задачей — не нужно искать в Telegram.</p>
         <div class="feat-tags"><span class="tag">Чат</span><span class="tag">История</span><span class="tag">Файлы</span></div>
       </div>
       <div class="feat-card">
-        <div class="feat-icon"></div>
+        <div class="feat-icon"><i data-lucide="shield-check"></i></div>
         <h3>Безопасность и 2FA</h3>
         <p>Данные клиентов надёжно защищены. Двухфакторная аутентификация, раздельный доступ по ролям, вход через Google.</p>
         <div class="feat-tags"><span class="tag">2FA</span><span class="tag">Google-вход</span><span class="tag">Ролевой доступ</span></div>
@@ -580,8 +586,8 @@
       </div>
       <div class="step">
         <div class="step-num">4</div>
-        <h4>Работаете</h4>
-        <p>Команда работает в системе, вы видите всё в реальном времени</p>
+        <h4>Запуск работы</h4>
+        <p>Команда заходит в систему и закрывает первые задачи</p>
       </div>
     </div>
   </div>
@@ -590,12 +596,12 @@
 <!-- ROLES -->
 <section class="roles" id="roles">
   <div class="container">
-    <div class="section-eyebrow">Ролевая модель</div>
-    <h2 class="section-title">Каждый видит<br>только своё</h2>
-    <p class="section-sub">Жёсткое разграничение доступа на уровне приложения. Клиент не видит чужих задач. Сотрудник не видит чужих клиентов.</p>
+    <div class="section-eyebrow">Роли и права</div>
+    <h2 class="section-title">6 ролей для<br>всей команды</h2>
+    <p class="section-sub">Каждый видит только то, что нужно для работы. Гибкая матрица доступов.</p>
     <div class="roles-grid">
       <div class="role-card">
-        <div class="role-pill">Admin</div>
+        <div class="role-pill"><i data-lucide="shield"></i> Admin</div>
         <h3>Admin</h3>
         <p class="sub">Полный доступ к системе</p>
         <ul>
@@ -606,7 +612,7 @@
         </ul>
       </div>
       <div class="role-card">
-        <div class="role-pill">Employee</div>
+        <div class="role-pill"><i data-lucide="briefcase"></i> Employee</div>
         <h3>Employee</h3>
         <p class="sub">Сотрудник компании</p>
         <ul>
@@ -617,7 +623,7 @@
         </ul>
       </div>
       <div class="role-card">
-        <div class="role-pill">Client</div>
+        <div class="role-pill"><i data-lucide="building-2"></i> Client</div>
         <h3>Client</h3>
         <p class="sub">Клиент бухгалтерской компании</p>
         <ul>
@@ -628,7 +634,7 @@
         </ul>
       </div>
       <div class="role-card">
-        <div class="role-pill">Advisor</div>
+        <div class="role-pill"><i data-lucide="eye"></i> Advisor</div>
         <h3>Advisor</h3>
         <p class="sub">Старший менеджер / советник</p>
         <ul>
@@ -638,7 +644,7 @@
         </ul>
       </div>
       <div class="role-card">
-        <div class="role-pill">Curator</div>
+        <div class="role-pill"><i data-lucide="book-open"></i> Curator</div>
         <h3>Curator</h3>
         <p class="sub">Куратор курсов LMS</p>
         <ul>
@@ -648,7 +654,7 @@
         </ul>
       </div>
       <div class="role-card">
-        <div class="role-pill">Learner</div>
+        <div class="role-pill"><i data-lucide="user-check"></i> Learner</div>
         <h3>Learner</h3>
         <p class="sub">Обучаемый (LMS)</p>
         <ul>
@@ -755,7 +761,7 @@
         <div class="lms-course">
           <strong>1С:Бухгалтерия для практиков</strong>
           <div class="prog-bar"><div class="prog-fill" style="width:100%;background:#16a34a"></div></div>
-          <div class="prog-info"><span>Завершён </span><span style="color:#16a34a">Сертификат выдан</span></div>
+          <div class="prog-info"><span>Завершён</span><span style="color:#16a34a">Сертификат выдан</span></div>
         </div>
         <div class="lms-course">
           <strong>ФНО 700.00: заполнение и сдача</strong>
@@ -848,7 +854,6 @@
           <li>Кастомные отчёты и аналитика</li>
           <li>Приоритетная поддержка + SLA</li>
           <li>Кастомный домен и CDN</li>
-          <li>Полный исходный код</li>
         </ul>
         <a href="#contact" class="btn btn-ghost" style="width:100%;justify-content:center">Связаться</a>
       </div>
@@ -864,9 +869,9 @@
       <h2>Оставьте<br>заявку</h2>
       <p>Расскажите о вашей компании — свяжемся и покажем систему в деле. Бесплатно и без обязательств.</p>
       <div class="contact-meta">
-        <div class="contact-meta-item"><div class="contact-icon"></div>Казахстан, Алматы</div>
-        <div class="contact-meta-item"><div class="contact-icon">⏱</div>Ответ в течение 1 рабочего дня</div>
-        <div class="contact-meta-item"><div class="contact-icon"></div>Данные не передаются третьим лицам</div>
+        <div class="contact-meta-item"><div class="contact-icon"><i data-lucide="map-pin"></i></div>Казахстан, Алматы</div>
+        <div class="contact-meta-item"><div class="contact-icon"><i data-lucide="clock"></i></div>Ответ в течение 1 рабочего дня</div>
+        <div class="contact-meta-item"><div class="contact-icon"><i data-lucide="shield-check"></i></div>Данные не передаются третьим лицам</div>
       </div>
     </div>
     <div class="contact-form-wrap">
@@ -887,7 +892,7 @@
         <textarea placeholder="Расскажите о задачах: CRM, документы, биллинг, обучение..."></textarea>
       </div>
       <button class="form-submit" onclick="submitForm()">Отправить заявку</button>
-      <div class="form-success" id="form-success"> Заявка принята! Свяжемся с вами в течение рабочего дня.</div>
+      <div class="form-success" id="form-success">Заявка принята! Свяжемся с вами в течение рабочего дня.</div>
     </div>
   </div>
 </section>
@@ -897,8 +902,8 @@
   <h2>Готовы упорядочить<br>работу компании?</h2>
   <p>Оставьте заявку — настроим систему под ваши процессы и передадим доступ.</p>
   <div class="cta-actions">
-    <a href="#contact" class="btn btn-beige btn-lg">Оставить заявку</a>
-    <a href="#features" class="btn btn-outline-beige btn-lg">Подробнее о системе</a>
+    <a href="#contact" class="btn btn-beige btn-lg"><i data-lucide="arrow-right"></i> Оставить заявку</a>
+    <a href="#features" class="btn btn-outline-beige btn-lg"><i data-lucide="layers"></i> Подробнее о системе</a>
   </div>
 </div>
 
@@ -945,6 +950,9 @@
 </footer>
 
 <script>
+  // Initialize Lucide SVG Icons
+  lucide.createIcons();
+
   // Nav scroll
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
@@ -966,7 +974,7 @@
     if (!name || !email) { alert('Заполните имя и email.'); return; }
     document.getElementById('form-success').style.display = 'block';
     document.querySelector('.form-submit').disabled = true;
-    document.querySelector('.form-submit').textContent = 'Отправлено ';
+    document.querySelector('.form-submit').textContent = 'Отправлено';
   }
 
   // Scroll-reveal (lightweight)
