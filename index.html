@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZhanFinance — CRM и учёт для бухгалтерских компаний Казахстана</title>
+<title>ZhanFinance — Бухгалтерские услуги и аутсорсинг для ТОО и ИП в Казахстане</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -97,8 +97,8 @@
   .hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s ease-in-out infinite; }
   @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.5)} }
   .hero h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 900; line-height: 1;
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
+    font-weight: 900; line-height: 1.05;
     letter-spacing: -2px; text-transform: uppercase;
     color: var(--green); margin-bottom: 1.5rem;
   }
@@ -109,7 +109,7 @@
   .hero-stat strong { display: block; font-size: 26px; font-weight: 900; letter-spacing: -1.5px; color: var(--green); }
   .hero-stat span { font-size: 13px; color: var(--green-80); font-weight: 500; }
 
-  /* Hero right — dashboard mockup */
+  /* Hero right — mockup */
   .hero-visual { position: relative; }
   .mockup-card {
     background: var(--white); border-radius: var(--r-xl);
@@ -134,9 +134,7 @@
   .mock-card { background: var(--white); border: 1px solid var(--green-10); border-radius: 10px; padding: .6rem; }
   .mock-card-label { font-size: 9px; color: var(--green-80); font-weight: 600; text-transform: uppercase; letter-spacing: .3px; }
   .mock-card-val { font-size: 16px; font-weight: 900; letter-spacing: -1px; color: var(--green); margin: .1rem 0; }
-  .mock-card-delta { font-size: 9px; font-weight: 700; }
-  .mock-card-delta.up { color: #16a34a; }
-  .mock-card-delta.warn { color: #ca8a04; }
+  .mock-card-delta { font-size: 9px; font-weight: 700; color: #16a34a; }
   .mock-kanban { display: grid; grid-template-columns: repeat(3,1fr); gap: .35rem; }
   .mock-col-title { font-size: 8px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; color: var(--green-80); margin-bottom: .25rem; }
   .mock-task { background: var(--white); border: 1px solid var(--green-10); border-radius: 7px; padding: .35rem .4rem; font-size: 9px; color: var(--green); font-weight: 600; margin-bottom: .2rem; }
@@ -155,7 +153,7 @@
     animation: float 4s ease-in-out infinite;
     border: 1px solid var(--green-10); z-index: 2;
   }
-  .hero-chip.chip1 { top: -24px; right: 10px; animation-delay: 0s; }
+  .hero-chip.chip1 { top: -20px; right: 20px; animation-delay: 0s; }
   .hero-chip.chip2 { bottom: 20px; left: -30px; animation-delay: 1.5s; }
   .chip-dot { width: 8px; height: 8px; border-radius: 50%; }
   @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
@@ -168,100 +166,39 @@
   .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; letter-spacing: -1.5px; text-transform: uppercase; line-height: .95; color: var(--green); margin-bottom: 1rem; }
   .section-sub { font-size: 17px; color: var(--green-80); line-height: 1.7; max-width: 540px; font-weight: 500; }
 
-  /* ── ROI CALCULATOR SECTION ── */
-  .calculator-section { background: var(--white); border-bottom: 1px solid var(--green-10); }
-  .calc-card {
-    background: var(--green); color: var(--beige); border-radius: var(--r-2xl);
-    padding: 3.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
-    box-shadow: 0 24px 64px rgba(0,86,45,.2);
-  }
-  .calc-left h3 { font-size: 2rem; font-weight: 900; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 1rem; color: var(--beige); }
-  .calc-left p { font-size: 15px; color: rgba(245,245,220,.8); line-height: 1.7; margin-bottom: 2rem; }
-  .range-wrap { margin-bottom: 2rem; }
-  .range-header { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; margin-bottom: .75rem; }
-  .range-val { font-size: 24px; font-weight: 900; color: var(--beige); }
-  input[type=range] {
-    width: 100%; height: 8px; border-radius: 4px; background: rgba(245,245,220,.2);
-    outline: none; accent-color: var(--beige); cursor: pointer;
-  }
-  .calc-results {
-    background: rgba(245,245,220,.08); border: 1px solid rgba(245,245,220,.15);
-    border-radius: var(--r-xl); padding: 2.25rem;
-  }
-  .calc-row { margin-bottom: 1.75rem; }
-  .calc-row:last-child { margin-bottom: 0; }
-  .calc-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: rgba(245,245,220,.6); margin-bottom: .25rem; }
-  .calc-big-num { font-size: 2.25rem; font-weight: 900; letter-spacing: -1.5px; color: var(--beige); line-height: 1.1; }
-  .calc-subtext { font-size: 12px; color: rgba(245,245,220,.7); margin-top: .2rem; }
-
-  /* ── LOCAL INTEGRATIONS & CASES ── */
-  .integrations-bar { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--green-10); }
-  .integ-title { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--green-80); margin-bottom: 1.25rem; text-align: center; }
-  .integ-logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
-  .integ-badge {
-    background: var(--white); border: 1px solid var(--green-10); border-radius: 999px;
-    padding: .5rem 1.25rem; font-size: 13px; font-weight: 800; color: var(--green);
-    display: flex; align-items: center; gap: .5rem; box-shadow: 0 4px 12px rgba(0,86,45,.04);
-  }
-
-  .cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
-  .case-card { background: var(--white); border: 1px solid var(--green-10); border-radius: var(--r-xl); padding: 2rem; }
-  .case-tag { display: inline-block; background: var(--green-10); color: var(--green); font-size: 11px; font-weight: 800; padding: .2rem .65rem; border-radius: 999px; margin-bottom: 1rem; text-transform: uppercase; }
-  .case-card h4 { font-size: 18px; font-weight: 900; color: var(--green); margin-bottom: 1rem; }
-  .case-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--green-10); }
-  .case-before { font-size: 13px; color: var(--green-80); background: var(--green-05); border: 1px solid var(--green-10); padding: .75rem; border-radius: 10px; font-weight: 600; }
-  .case-after { font-size: 13px; color: var(--green); background: var(--green-10); border: 1px solid var(--green-40); padding: .75rem; border-radius: 10px; font-weight: 700; }
-
-  /* ── SHIELD & PAIN POINTS ── */
-  .shield-section { background: var(--beige); }
-  .shield-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
-  .pain-card { background: var(--white); border: 1px solid var(--green-10); border-radius: var(--r-xl); padding: 2rem; }
-  .pain-card h4 { font-size: 16px; font-weight: 800; color: var(--green); text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: .5rem; }
-  .pain-card ul { list-style: none; }
-  .pain-card li { font-size: 14px; color: var(--green-80); padding: .45rem 0; position: relative; padding-left: 1.5rem; font-weight: 500; }
-  .pain-card li::before { content: '✕'; position: absolute; left: 0; color: var(--green-40); font-weight: 900; }
-
-  .shield-card { background: var(--white); border: 1.5px solid var(--green-40); border-radius: var(--r-xl); padding: 2rem; box-shadow: 0 12px 32px rgba(0,86,45,.06); }
-  .shield-card h4 { font-size: 16px; font-weight: 800; color: var(--green); text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: .5rem; }
-  .shield-card ul { list-style: none; }
-  .shield-card li { font-size: 14px; color: var(--green); padding: .45rem 0; position: relative; padding-left: 1.5rem; font-weight: 600; }
-  .shield-card li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 900; }
-
-  /* ── FEATURES ── */
-  .features { background: var(--white); }
-  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
-  .feat-card {
+  /* ── SERVICES SECTION ── */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .service-card {
     background: var(--beige); border: 1px solid var(--green-10);
-    border-radius: var(--r-xl); padding: 2rem;
-    transition: all .25s ease;
+    border-radius: var(--r-xl); padding: 2.25rem; transition: all .25s ease;
   }
-  .feat-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,86,45,.1); border-color: var(--green-40); }
-  .feat-icon {
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,86,45,.1); border-color: var(--green-40); }
+  .service-icon {
     width: 48px; height: 48px; border-radius: 14px;
     background: var(--green); color: var(--beige);
     display: flex; align-items: center; justify-content: center;
     font-size: 20px; margin-bottom: 1.25rem;
   }
-  .feat-icon svg { width: 24px; height: 24px; stroke-width: 2px; }
-  .feat-card h3 { font-size: 17px; font-weight: 800; color: var(--green); margin-bottom: .5rem; }
-  .feat-card p { font-size: 14px; color: var(--green-80); line-height: 1.7; }
-  .feat-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: 1rem; }
-  .tag { font-size: 11px; font-weight: 700; padding: .25rem .6rem; border-radius: 999px; background: var(--white); color: var(--green); border: 1px solid var(--green-10); }
+  .service-icon svg { width: 24px; height: 24px; stroke-width: 2px; }
+  .service-card h3 { font-size: 18px; font-weight: 800; color: var(--green); margin-bottom: .6rem; }
+  .service-card p { font-size: 14px; color: var(--green-80); line-height: 1.7; margin-bottom: 1.25rem; }
+  .service-list { list-style: none; }
+  .service-list li { font-size: 13px; color: var(--green); padding: .35rem 0; border-bottom: 1px solid var(--green-10); padding-left: 1.25rem; position: relative; font-weight: 500; }
+  .service-list li:last-child { border-bottom: none; }
+  .service-list li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 900; }
 
-  /* ── FAQ ACCORDION ── */
-  .faq { background: var(--beige); }
-  .faq-list { max-width: 840px; margin: 2.5rem auto 0; display: flex; flex-direction: column; gap: 1rem; }
-  .faq-item { background: var(--white); border: 1px solid var(--green-10); border-radius: var(--r-lg); overflow: hidden; transition: border-color .2s; }
-  .faq-question {
-    padding: 1.25rem 1.5rem; font-size: 16px; font-weight: 800; color: var(--green);
-    cursor: pointer; display: flex; justify-content: space-between; align-items: center;
-    user-select: none;
-  }
-  .faq-question svg { width: 20px; height: 20px; transition: transform .3s ease; flex-shrink: 0; }
-  .faq-answer { padding: 0 1.5rem 1.25rem; font-size: 14px; color: var(--green-80); line-height: 1.7; display: none; }
-  .faq-item.open { border-color: var(--green-40); box-shadow: 0 8px 24px rgba(0,86,45,.06); }
-  .faq-item.open .faq-question svg { transform: rotate(180deg); }
-  .faq-item.open .faq-answer { display: block; }
+  /* ── CABINET BENEFIT SECTION ── */
+  .cabinet-section { background: var(--green); color: var(--beige); }
+  .cabinet-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .cabinet-text h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; text-transform: uppercase; letter-spacing: -1.5px; line-height: .95; color: var(--beige); margin-bottom: 1rem; }
+  .cabinet-text p { font-size: 16px; color: rgba(245,245,220,.8); line-height: 1.75; margin-bottom: 2rem; }
+  .cabinet-features { display: flex; flex-direction: column; gap: 1rem; }
+  .cab-feat-item { display: flex; gap: 1rem; align-items: start; background: rgba(245,245,220,.08); border: 1px solid rgba(245,245,220,.12); padding: 1.25rem; border-radius: var(--r-lg); }
+  .cab-feat-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(245,245,220,.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--beige); }
+  .cab-feat-icon svg { width: 18px; height: 18px; }
+  .cab-feat-info h4 { font-size: 15px; font-weight: 800; color: var(--beige); margin-bottom: .2rem; }
+  .cab-feat-info p { font-size: 13px; color: rgba(245,245,220,.7); line-height: 1.6; margin: 0; }
 
   /* ── PRICING ── */
   .pricing { background: var(--white); }
@@ -281,11 +218,22 @@
   .plan li:last-child { border-bottom: none; }
   .plan li::before { content: '✓'; position: absolute; left: 0; font-weight: 900; color: var(--green); }
   .plan.featured li::before { color: var(--beige); }
-  .plan li.off::before { content: '✕'; opacity: .4; }
-  .plan li.off { opacity: .45; }
+
+  /* ── HOW IT WORKS ── */
+  .how { background: var(--beige); }
+  .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; margin-top: 3rem; }
+  .step { background: var(--white); border: 1px solid var(--green-10); border-radius: var(--r-xl); padding: 1.75rem; position: relative; }
+  .step-num {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: var(--green); color: var(--beige);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 900; margin-bottom: 1.25rem;
+  }
+  .step h4 { font-size: 16px; font-weight: 800; text-transform: uppercase; margin-bottom: .5rem; color: var(--green); }
+  .step p { font-size: 13px; color: var(--green-80); line-height: 1.65; }
 
   /* ── CONTACT ── */
-  .contact { background: var(--beige); }
+  .contact { background: var(--white); }
   .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
   .contact-info h2 { font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 900; text-transform: uppercase; letter-spacing: -1.5px; line-height: .95; margin-bottom: 1rem; }
   .contact-info p { font-size: 16px; color: var(--green-80); margin-bottom: 2rem; line-height: 1.7; font-weight: 500; }
@@ -293,14 +241,14 @@
   .contact-meta-item { display: flex; align-items: center; gap: .75rem; font-size: 14px; font-weight: 600; }
   .contact-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--green-10); border: 1px solid var(--green-10); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
   .contact-icon svg { width: 18px; height: 18px; color: var(--green); stroke-width: 2px; }
-  .contact-form-wrap { background: var(--white); border: 1px solid var(--green-10); border-radius: var(--r-2xl); padding: 2rem; }
+  .contact-form-wrap { background: var(--beige); border: 1px solid var(--green-10); border-radius: var(--r-2xl); padding: 2rem; }
   .form-group { margin-bottom: 1rem; }
   .form-group label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--green-80); margin-bottom: .4rem; }
   .form-group input, .form-group textarea, .form-group select {
     width: 100%; padding: .75rem 1rem;
     border: 1.5px solid var(--green-10); border-radius: var(--r);
     font-size: 14px; font-family: var(--font); color: var(--green);
-    background: var(--beige); outline: none; transition: border-color .15s; font-weight: 500;
+    background: var(--white); outline: none; transition: border-color .15s; font-weight: 500;
   }
   .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
     border-color: var(--green); box-shadow: 0 0 0 3px var(--green-10);
@@ -343,7 +291,7 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
-    .hero-inner, .about-inner, .contact-inner, .calc-card, .cases-grid, .shield-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-inner, .cabinet-inner, .contact-inner, .steps { grid-template-columns: 1fr; gap: 2.5rem; }
     .hero-visual { display: block; margin-top: 1rem; }
     .mockup-card { transform: none; }
     .pricing-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
@@ -360,7 +308,6 @@
     .hero-stats { grid-template-columns: 1fr 1fr; display: grid; gap: 1rem; margin-top: 1.5rem; padding-top: 1.25rem; }
     .hero-stat strong { font-size: 20px; }
     .hero-stat span { font-size: 12px; }
-    .calc-card { padding: 1.75rem 1.25rem; }
     .mock-body { grid-template-columns: 1fr; }
     .mock-sidebar { display: none; }
     .hero-chip.chip1, .hero-chip.chip2 { display: none; }
@@ -388,15 +335,15 @@
       </div>
     </a>
     <ul class="nav-links">
-      <li><a href="#calculator">Калькулятор ROI</a></li>
-      <li><a href="#features">Возможности</a></li>
-      <li><a href="#cases">Кейсы</a></li>
+      <li><a href="#services">Услуги</a></li>
+      <li><a href="#cabinet">Личный кабинет</a></li>
       <li><a href="#pricing">Тарифы</a></li>
-      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#how">Как работаем</a></li>
+      <li><a href="#contact">Контакты</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="#contact" class="btn btn-ghost"><i data-lucide="log-in"></i> Войти</a>
-      <a href="#contact" class="btn btn-solid"><i data-lucide="sparkles"></i> Демо</a>
+      <a href="#contact" class="btn btn-ghost"><i data-lucide="phone"></i> Консультация</a>
+      <a href="#contact" class="btn btn-solid"><i data-lucide="sparkles"></i> Рассчитать стоимость</a>
     </div>
   </div>
 </nav>
@@ -407,72 +354,68 @@
   <div class="hero-blob2"></div>
   <div class="hero-inner">
     <div>
-      <div class="hero-badge"><span></span> Казахстан · B2B платформа</div>
-      <h1>Ваша<br><em>CRM</em><br>для<br>бухгалтеров</h1>
-      <p class="hero-sub">Полная замена Bitrix24, amoCRM и сторонних сервисов. Один кабинет — клиенты, задачи, документы, биллинг, обучение.</p>
+      <div class="hero-badge"><span></span> Бухгалтерский аутсорсинг под ключ · Алматы / Казахстан</div>
+      <h1>Профессиональная<br>бухгалтерия<br>для вашего бизнеса</h1>
+      <p class="hero-sub">Передайте отчёты, АВР, ЭСФ и зарплату экспертам ZhanFinance. Вы получаете 100% порядок, финансовую гарантию от штрафов и прозрачный личный кабинет 24/7.</p>
       <div class="hero-actions">
-        <a href="#contact" class="btn btn-solid btn-lg"><i data-lucide="arrow-right"></i> Оставить заявку</a>
-        <a href="#calculator" class="btn btn-ghost btn-lg"><i data-lucide="calculator"></i> Посчитать экономию</a>
+        <a href="#contact" class="btn btn-solid btn-lg"><i data-lucide="arrow-right"></i> Получить консультацию</a>
+        <a href="#pricing" class="btn btn-ghost btn-lg"><i data-lucide="calculator"></i> Посмотреть тарифы</a>
       </div>
       <div class="hero-stats">
-        <div class="hero-stat"><strong>в 3×</strong><span>быстрее выписка АВР</span></div>
-        <div class="hero-stat"><strong>0 ₸</strong><span>доплат за сотрудников</span></div>
-        <div class="hero-stat"><strong>24 часа</strong><span>импорт вашей базы</span></div>
+        <div class="hero-stat"><strong>100%</strong><span>гарантия защиты от штрафов</span></div>
+        <div class="hero-stat"><strong>в 1 клик</strong><span>доступ ко всем АВР и актам</span></div>
+        <div class="hero-stat"><strong>24/7</strong><span>контроль в личном кабинете</span></div>
       </div>
     </div>
     <div class="hero-visual">
       <div class="hero-chip chip1">
         <div class="chip-dot" style="background:#16a34a"></div>
-        АВР отправлен клиенту в 1 клик
+        Отчётность за III квартал сдана без ошибок
       </div>
       <div class="mockup-card">
         <div class="mock-bar">
           <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
-          <div class="mock-url">app.zhanfinance.kz/dashboard</div>
+          <div class="mock-url">app.zhanfinance.kz/client-portal</div>
         </div>
         <div class="mock-body">
           <div class="mock-sidebar">
             <div class="mock-logo">ZhanFinance</div>
-            <div class="mock-nav-item active"><i data-lucide="layout-dashboard"></i> Обзор</div>
-            <div class="mock-nav-item"><i data-lucide="kanban"></i> CRM</div>
-            <div class="mock-nav-item"><i data-lucide="file-text"></i> Документы</div>
-            <div class="mock-nav-item"><i data-lucide="credit-card"></i> Биллинг</div>
-            <div class="mock-nav-item"><i data-lucide="graduation-cap"></i> Обучение</div>
-            <div class="mock-nav-item"><i data-lucide="message-square"></i> Чат</div>
+            <div class="mock-nav-item active"><i data-lucide="layout-dashboard"></i> Мой кабинет</div>
+            <div class="mock-nav-item"><i data-lucide="file-text"></i> Мои АВР и Акты</div>
+            <div class="mock-nav-item"><i data-lucide="credit-card"></i> Счета и Инвойсы</div>
+            <div class="mock-nav-item"><i data-lucide="message-square"></i> Чат с бухгалтером</div>
           </div>
           <div class="mock-main">
-            <div class="mock-header">Обзор · Август 2026</div>
+            <div class="mock-header">Кабинет клиента · ТОО «АлмаТрейд»</div>
             <div class="mock-cards">
               <div class="mock-card">
-                <div class="mock-card-label">Задачи</div>
-                <div class="mock-card-val">48</div>
-                <div class="mock-card-delta up">+12% к июлю</div>
+                <div class="mock-card-label">Статус отчётов</div>
+                <div class="mock-card-val">Сдано</div>
+                <div class="mock-card-delta up">ФНО 910.00 принята</div>
               </div>
               <div class="mock-card">
-                <div class="mock-card-label">Выручка</div>
-                <div class="mock-card-val">₸855K</div>
-                <div class="mock-card-delta up">+8%</div>
+                <div class="mock-card-label">Готовые АВР</div>
+                <div class="mock-card-val">12</div>
+                <div class="mock-card-delta up">Скачать PDF</div>
               </div>
               <div class="mock-card">
-                <div class="mock-card-label">Просрочено</div>
-                <div class="mock-card-val">0</div>
-                <div class="mock-card-delta up">Все сдано</div>
+                <div class="mock-card-label">Штрафы и пени</div>
+                <div class="mock-card-val">0 ₸</div>
+                <div class="mock-card-delta up">100% Порядок</div>
               </div>
             </div>
             <div class="mock-kanban">
               <div>
-                <div class="mock-col-title">Новые</div>
-                <div class="mock-task">Регистрация ТОО <div class="mock-tag crm">CRM</div></div>
-                <div class="mock-task">ФНО 700.00 <div class="mock-tag doc">Docs</div></div>
+                <div class="mock-col-title">Запросы</div>
+                <div class="mock-task">Выписка ЭСФ #402 <div class="mock-tag crm">В процессе</div></div>
               </div>
               <div>
-                <div class="mock-col-title">В работе</div>
-                <div class="mock-task">Квартальный АВР <div class="mock-tag doc">Docs</div></div>
-                <div class="mock-task">Инвойс #083 <div class="mock-tag bil">Billing</div></div>
+                <div class="mock-col-title">Подготовлено</div>
+                <div class="mock-task">Акт сверки за Август <div class="mock-tag doc">Готово</div></div>
               </div>
               <div>
-                <div class="mock-col-title">Готово</div>
-                <div class="mock-task">Годовой отчёт <div class="mock-tag crm">CRM</div></div>
+                <div class="mock-col-title">Подписано</div>
+                <div class="mock-task">Договор аутсорсинга <div class="mock-tag bil">Архив</div></div>
               </div>
             </div>
           </div>
@@ -480,223 +423,108 @@
       </div>
       <div class="hero-chip chip2">
         <div class="chip-dot" style="background:#ca8a04"></div>
-        INV-2026-083 · ₸320,000 Оплачен
+        ФНО 300.00 НДС · Принято НУ
       </div>
     </div>
   </div>
 </section>
 
-<!-- ROI CALCULATOR -->
-<section class="calculator-section" id="calculator">
+<!-- SERVICES -->
+<section class="services" id="services">
   <div class="container">
-    <div class="calc-card">
-      <div class="calc-left">
-        <div class="section-eyebrow" style="color:var(--beige)">Интерактивный расчёт</div>
-        <h3>Сколько вы экономите с ZhanFinance?</h3>
-        <p>Передвиньте ползунок и посмотрите, сколько бюджета и времени освободится у вашей бухгалтерской компании.</p>
+    <div class="section-eyebrow">Комплексные услуги</div>
+    <h2 class="section-title">Всё для вашей бухгалтерии<br>в одном месте</h2>
+    <p class="section-sub">Вам больше не нужно держать штатного бухгалтера или переживать за ушедшие кадры.</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><i data-lucide="calculator"></i></div>
+        <h3>Ведение бухгалтерского и налогового учёта</h3>
+        <p>Полное сопровождение ТОО и ИП на любом режиме (упрощёнка, розничный налог, общеустановленный с НДС).</p>
+        <ul class="service-list">
+          <li>Составление и сдача ФНО (910, 300, 700, 100)</li>
+          <li>Учёт доходов, расходов и первичных документов</li>
+          <li>Своевременная распечатка и подписание реестров</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i data-lucide="file-check-2"></i></div>
+        <h3>Выписка ЭСФ, АВР и СНТ</h3>
+        <p>Оперативная подготовка документов для ваших покупателей без задержек и ошибок в реквизитах.</p>
+        <ul class="service-list">
+          <li>Выписка ЭСФ в ИС ЭСФ в день запроса</li>
+          <li>Генерация АВР и актов выполненных работ</li>
+          <li>Оформление СНТ и накладных на отпуск товаров</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i data-lucide="users"></i></div>
+        <h3>Расчёт зарплаты и кадровый учёт</h3>
+        <p>Расчёт налогов с ФОТ (ИПН, ОПВ, СО, ОСМС) и полное кадровое делопроизводство.</p>
+        <ul class="service-list">
+          <li>Приём, увольнение и кадровые приказы</li>
+          <li>Расчёт отпускных, больничных и компенсаций</li>
+          <li>Регистрация трудовых договоров на enbek.kz</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CABINET ADVANTAGE -->
+<section class="cabinet-section" id="cabinet">
+  <div class="container">
+    <div class="cabinet-inner">
+      <div class="cabinet-text">
+        <div class="section-eyebrow" style="color:var(--beige)">Уникальный клиентский сервис</div>
+        <h2>Ваш прозрачный онлайн-кабинет 24/7</h2>
+        <p>В отличие от обычных бухгалтеров на удалёнке, с ZhanFinance вы не гадаете, сдан ли отчёт и где находится АВР. Вы в любой момент заходите в свой личный кабинет с любого устройства.</p>
         
-        <div class="range-wrap">
-          <div class="range-header">
-            <span>Количество сотрудников:</span>
-            <span class="range-val" id="emp-count-disp">10 человек</span>
+        <div class="cabinet-features">
+          <div class="cab-feat-item">
+            <div class="cab-feat-icon"><i data-lucide="eye"></i></div>
+            <div class="cab-feat-info">
+              <h4>100% прозрачность задач</h4>
+              <p>Видите статус каждого вашего запроса и календарь налоговых платежей в реальном времени.</p>
+            </div>
           </div>
-          <input type="range" id="emp-range" min="1" max="50" value="10" oninput="updateCalc()">
-        </div>
 
-        <a href="#contact" class="btn btn-beige btn-lg" style="width:100%;justify-content:center">
-          <i data-lucide="check-circle-2"></i> Зафиксировать цену и получить демо
-        </a>
-      </div>
-
-      <div class="calc-results">
-        <div class="calc-row">
-          <div class="calc-label">Текущие расходы на CRM за 1 год</div>
-          <div class="calc-big-num" id="current-cost">₸ 480 000</div>
-          <div class="calc-subtext">Ежемесячная оплата за рабочих пользователей</div>
-        </div>
-        <div class="calc-row">
-          <div class="calc-label">Ваша чистая экономия с ZhanFinance</div>
-          <div class="calc-big-num" id="saved-money">₸ 395 000 / год</div>
-          <div class="calc-subtext">Фиксированный тариф без скрытых платных мест</div>
-        </div>
-        <div class="calc-row">
-          <div class="calc-label">Свободные рабочие часы команды</div>
-          <div class="calc-big-num" id="saved-hours">150 часов / мес</div>
-          <div class="calc-subtext">Время, освобожденное от ручной выписки АВР и поиска файлов</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LOCAL INTEGRATIONS & CASES -->
-<section class="about" id="cases">
-  <div class="container">
-    <div class="section-eyebrow">Казахстанские реалии</div>
-    <h2 class="section-title">Создано специально для рынка Казахстана</h2>
-    <p class="section-sub">Забудьте о зарубежных сервисах, не приспособленных под АВР, ФНО и интеграции с банками РК.</p>
-    
-    <div class="integrations-bar">
-      <div class="integ-title">Прямая поддержка ключевых систем:</div>
-      <div class="integ-logos">
-        <div class="integ-badge"><i data-lucide="check-circle-2"></i> 1С:Бухгалтерия 8.3 (KZ)</div>
-        <div class="integ-badge"><i data-lucide="check-circle-2"></i> Kaspi Pay</div>
-        <div class="integ-badge"><i data-lucide="check-circle-2"></i> Halyk Epay</div>
-        <div class="integ-badge"><i data-lucide="check-circle-2"></i> ИС ЭСФ</div>
-        <div class="integ-badge"><i data-lucide="check-circle-2"></i> eGov.kz</div>
-      </div>
-    </div>
-
-    <!-- Реальные кейсы -->
-    <div style="margin-top: 4rem;">
-      <div class="section-eyebrow">Результаты внедрения</div>
-      <h2 class="section-title">Как меняются показатели компании</h2>
-      <div class="cases-grid">
-        <div class="case-card">
-          <span class="case-tag">ТОО «АлмаБух» · 14 сотрудников</span>
-          <h4>Ускорение выписки АВР и актов в 9 раз</h4>
-          <p>Раньше менеджеры вручную заполняли шаблоны Word и Excel, отправляли через Telegram и теряли версии файлов.</p>
-          <div class="case-compare">
-            <div class="case-before">Было: 4 дня на выписку 120 АВР</div>
-            <div class="case-after">Стало: 40 минут в 1 клик</div>
+          <div class="cab-feat-item">
+            <div class="cab-feat-icon"><i data-lucide="folder-down"></i></div>
+            <div class="cab-feat-info">
+              <h4>Все документы в одном клике</h4>
+              <p>Скачивайте готовые АВР, акты и счета в PDF 24/7 без лишних звонков и писем.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="case-card">
-          <span class="case-tag">ИП Жаксыбеков · 8 сотрудников</span>
-          <h4>Нуль просрочек по отчётам и дебиторке</h4>
-          <p>Благодаря прозрачной воронке и автонапоминаниям счета оплачиваются вовремя, а отчёты сдаются без штрафов.</p>
-          <div class="case-compare">
-            <div class="case-before">Было: 11 просрочек в квартал</div>
-            <div class="case-after">Стало: 0 просрочек за 6 мес</div>
+          <div class="cab-feat-item">
+            <div class="cab-feat-icon"><i data-lucide="message-square"></i></div>
+            <div class="cab-feat-info">
+              <h4>Прямой чат с персональным бухгалтером</h4>
+              <p>Никаких потерянных переписок в Telegram или личных мессенджерах. История хранится в защищённом профиле.</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- SHIELD: ПРЕДОТВРАЩЕНИЕ ОШИБОК -->
-<section class="shield-section">
-  <div class="container">
-    <div class="section-eyebrow">Защита от человеческого фактора</div>
-    <h2 class="section-title">Защитите бизнес от ошибок сотрудников</h2>
-    <p class="section-sub">Когда сотрудники работают в разрозненных чатах и таблицах, компания ежедневно теряет деньги.</p>
-
-    <div class="shield-grid">
-      <div class="pain-card">
-        <h4>Хаос в Telegram и Excel</h4>
-        <ul>
-          <li>Забыли выставить АВР вовремя → Задержка оплаты на 3 недели</li>
-          <li>Первичка потерялась в личке сотрудника → Штрафы при проверке</li>
-          <li>Сотрудник уволился → Унёс контакты и историю клиентов</li>
-          <li>Нет контроля нагрузки → Бухгалтер перегружен, задачи просрочены</li>
-        </ul>
-      </div>
-
-      <div class="shield-card">
-        <h4>Порядок в ZhanFinance</h4>
-        <ul>
-          <li>Автоматические напоминания о просроченных счетах и задачах</li>
-          <li>Вся переписка и файлы хранятся в карточке клиента</li>
-          <li>Полная история всех действий сотрудников и безопасная блокировка</li>
-          <li>Сводный дашборд Advisor: руководитель сразу видит узкие места</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section class="features" id="features">
-  <div class="container">
-    <div class="section-eyebrow">Модули платформы</div>
-    <h2 class="section-title">Всё включено в одну систему</h2>
-    <div class="features-grid">
-      <div class="feat-card">
-        <div class="feat-icon"><i data-lucide="kanban"></i></div>
-        <h3>CRM и воронка задач</h3>
-        <p>Видите всех клиентов, задачи и статусы в одном месте. Каждый сотрудник работает только со своей очередью.</p>
-        <div class="feat-tags"><span class="tag">Доска задач</span><span class="tag">Очередь</span><span class="tag">История</span></div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon"><i data-lucide="file-text"></i></div>
-        <h3>Документооборот</h3>
-        <p>АВР, акты и договоры по шаблону за секунды. Документы хранятся в системе — клиент скачивает из своего кабинета.</p>
-        <div class="feat-tags"><span class="tag">АВР</span><span class="tag">Акты</span><span class="tag">Шаблоны</span></div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon"><i data-lucide="credit-card"></i></div>
-        <h3>Биллинг и инвойсы</h3>
-        <p>Выставляете счёт в два клика. Клиент получает PDF на почту и оплачивает через Kaspi Pay или Halyk Epay.</p>
-        <div class="feat-tags"><span class="tag">Инвойсы</span><span class="tag">Подписки</span><span class="tag">Kaspi Pay</span></div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon"><i data-lucide="graduation-cap"></i></div>
-        <h3>LMS-обучение</h3>
-        <p>Курсы → Разделы → Уроки. Автоматическая выдача сертификатов при 100% прохождении. Быстрый онбординг новичков.</p>
-        <div class="feat-tags"><span class="tag">Курсы</span><span class="tag">Сертификаты</span><span class="tag">Прогресс</span></div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon"><i data-lucide="message-square"></i></div>
-        <h3>Real-time чат</h3>
-        <p>Общаетесь с клиентами прямо в системе. Вся история переписки хранится рядом с задачей — не нужно искать в Telegram.</p>
-        <div class="feat-tags"><span class="tag">Чат</span><span class="tag">История</span><span class="tag">Файлы</span></div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon"><i data-lucide="shield-check"></i></div>
-        <h3>Безопасность и 2FA</h3>
-        <p>Данные клиентов надёжно защищены. Двухфакторная аутентификация, раздельный доступ по ролям, вход через Google.</p>
-        <div class="feat-tags"><span class="tag">2FA</span><span class="tag">Google-вход</span><span class="tag">Ролевой доступ</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ ACCORDION -->
-<section class="faq" id="faq">
-  <div class="container">
-    <div class="section-eyebrow" style="justify-content:center">Вопросы и ответы</div>
-    <h2 class="section-title" style="text-align:center">Ответы на главные вопросы руководителей</h2>
-    
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Как перенести клиентов и текущие задачи из Excel / Bitrix24?</span>
-          <i data-lucide="chevron-down"></i>
-        </div>
-        <div class="faq-answer">
-          Мы полностью берём технический перенос на себя. Вы передаёте нам ваши таблицы или выгрузку из Bitrix — наша команда конвертирует и импортирует всю базу клиентов, контактов и активных услуг в течение 24 часов бесплатно.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Нужен ли в нашей компании системный администратор или IT-шник?</span>
-          <i data-lucide="chevron-down"></i>
-        </div>
-        <div class="faq-answer">
-          Совершенно нет. ZhanFinance поставляется как полностью готовая облачная инфраструктура или выделенный сервер под ключ. Все обновления, бэкапы и техническую поддержку мы производим сами.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Как защищена коммерческая тайна наших клиентов?</span>
-          <i data-lucide="chevron-down"></i>
-        </div>
-        <div class="faq-answer">
-          Каждая компания получает изолированную базу данных (Multi-tenancy). Доступ к данным шифруется по стандарту SSL/TLS, а вход сотрудников защищен 2FA и двухфакторной аутентификацией.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Сколько реально занимает внедрение системы?</span>
-          <i data-lucide="chevron-down"></i>
-        </div>
-        <div class="faq-answer">
-          Настройка вашего кабинета занимает 2 часа. Полный перенос базы клиентов и короткий вводный инструктаж для сотрудников проводятся за 1 рабочий день. На следующий день ваша команда уже полноценно закрывает задачи в системе.
+      <div class="hero-visual">
+        <div class="mockup-card">
+          <div class="mock-bar">
+            <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
+            <div class="mock-url">app.zhanfinance.kz/portal</div>
+          </div>
+          <div class="mock-body" style="grid-template-columns: 1fr; padding: 1.5rem; background: var(--white);">
+            <div style="font-size: 15px; font-weight: 800; color: var(--green); margin-bottom: 1rem;">Единый центр управления вашей бухгалтерией</div>
+            <div style="font-size: 13px; color: var(--green-80); line-height: 1.7; margin-bottom: 1.5rem;">
+              Вам больше не нужно звонить и спрашивать: <em>«А вы выписали акт?»</em> или <em>«Сдана ли декларация?»</em>. Всё автоматически отображается в вашем личном кабинете.
+            </div>
+            <div style="background: var(--beige); padding: 1rem; border-radius: var(--r-lg); border: 1px solid var(--green-10);">
+              <div style="font-size: 12px; font-weight: 800; color: var(--green);">Финансовая ответственность:</div>
+              <div style="font-size: 12px; color: var(--green-80); margin-top: .25rem;">Мы несём 100% материальную ответственность по договору за правильность и своевременность учёта.</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -707,61 +535,95 @@
 <section class="pricing" id="pricing">
   <div class="container">
     <div class="pricing-inner">
-      <div class="section-eyebrow" style="justify-content:center">Тарифы</div>
-      <h2 class="section-title">Прозрачное<br>ценообразование</h2>
-      <p class="section-sub" style="margin: .75rem auto 0; text-align:center">Без скрытых платежей. Фиксированная стоимость без ограничений на пользователей.</p>
+      <div class="section-eyebrow" style="justify-content:center">Тарифы на обслуживание</div>
+      <h2 class="section-title">Прозрачная стоимость<br>без скрытых платежей</h2>
+      <p class="section-sub" style="margin: .75rem auto 0; text-align:center">Выберите тариф под форму собственности вашего бизнеса.</p>
     </div>
+
     <div class="pricing-grid">
-      <!-- СТАРТ -->
+      <!-- ИП -->
       <div class="plan">
-        <div class="plan-name">Старт</div>
-        <div class="plan-desc">Для небольших компаний до 5 сотрудников</div>
-        <div class="plan-price">₸ 35,000 <small>/ месяц</small></div>
+        <div class="plan-name">ИП</div>
+        <div class="plan-desc">Упрощёнка / Розничный налог</div>
+        <div class="plan-price">₸ 25,000 <small>/ месяц</small></div>
         <hr>
         <ul>
-          <li>CRM и доска задач</li>
-          <li>Документы и генерация АВР</li>
-          <li>Биллинг и инвойсы</li>
-          <li>Внутренний чат</li>
-          <li class="off">LMS-обучение</li>
-          <li class="off">Advisor-роль</li>
-          <li class="off">2FA</li>
+          <li>Сдача ФНО 910.00 / 915.00</li>
+          <li>Выписка до 20 ЭСФ и АВР в месяц</li>
+          <li>Кадровый учёт до 3 сотрудников</li>
+          <li>Доступ к Личному Кабинету 24/7</li>
+          <li>Консультации бухгалтера</li>
         </ul>
         <a href="#contact" class="btn btn-ghost" style="width:100%;justify-content:center">Выбрать тариф</a>
       </div>
-      <!-- БИЗНЕС -->
+
+      <!-- ТОО УПРОЩЁНКА -->
       <div class="plan featured">
         <div class="plan-badge">Популярный</div>
-        <div class="plan-name">Бизнес</div>
-        <div class="plan-desc">Оптимально для компаний 5–20 сотрудников</div>
-        <div class="plan-price">₸ 85,000 <small>/ месяц</small></div>
+        <div class="plan-name">ТОО Упрощёнка</div>
+        <div class="plan-desc">Оптимально для малого бизнеса без НДС</div>
+        <div class="plan-price">₸ 45,000 <small>/ месяц</small></div>
         <hr style="border-color:rgba(245,245,220,.2)">
         <ul>
-          <li>Всё из тарифа «Старт»</li>
-          <li>LMS с сертификатами</li>
-          <li>Advisor-роль руководителя</li>
-          <li>2FA и усиленная безопасность</li>
-          <li>Email-уведомления</li>
-          <li>PDF-инвойсы</li>
-          <li class="off">Интеграция с 1С</li>
+          <li>Всё из тарифа «ИП»</li>
+          <li>Полный налоговый и бухучёт ТОО</li>
+          <li>Кадровый учёт до 10 сотрудников</li>
+          <li>Выписка ЭСФ, СНТ и АВР</li>
+          <li>Персональный бухгалтер</li>
+          <li>Личный кабинет клиента 24/7</li>
         </ul>
-        <a href="#contact" class="btn btn-beige" style="width:100%;justify-content:center">Подключить Бизнес</a>
+        <a href="#contact" class="btn btn-beige" style="width:100%;justify-content:center">Подключить ТОО</a>
       </div>
-      <!-- КОРПОРАТИВНЫЙ -->
+
+      <!-- ТОО С НДС -->
       <div class="plan">
-        <div class="plan-name">Корпоративный</div>
-        <div class="plan-desc">Для компаний от 20 сотрудников</div>
-        <div class="plan-price">По запросу</div>
+        <div class="plan-name">ТОО с НДС</div>
+        <div class="plan-desc">Общеустановленный режим / Торговля / Производство</div>
+        <div class="plan-price">₸ 85,000 <small>/ месяц</small></div>
         <hr>
         <ul>
-          <li>Всё из тарифа «Бизнес»</li>
-          <li>Интеграция с 1С:Бухгалтерия</li>
-          <li>Kaspi Pay и Halyk Epay</li>
-          <li>Кастомные отчёты и аналитика</li>
-          <li>Приоритетная поддержка + SLA</li>
-          <li>Кастомный домен и CDN</li>
+          <li>Ведение учёта НДС (ФНО 300.00) и КПН (ФНО 100.00)</li>
+          <li>Импорт/Экспорт, ЕАЭС, ТС</li>
+          <li>Неограниченные ЭСФ и СНТ</li>
+          <li>Экспресс-аудит при входе</li>
+          <li>Приоритетная поддержка 24/7</li>
         </ul>
-        <a href="#contact" class="btn btn-ghost" style="width:100%;justify-content:center">Связаться</a>
+        <a href="#contact" class="btn btn-ghost" style="width:100%;justify-content:center">Получить расчёт</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="section-eyebrow">Простой старт</div>
+    <h2 class="section-title">Как мы начинаем работу</h2>
+    <p class="section-sub">Начните сотрудничество за 4 простых шага без отрыва от вашего бизнеса.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Заявка</h4>
+        <p>Оставляете форму — наш старший бухгалтер связывается с вами за 15 минут.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Экспресс-аудит</h4>
+        <p>Бесплатно проверяем текущее состояние базы, сдачу ФНО и наличие хвостов.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Договор и Кабинет</h4>
+        <p>Подписываем договор с финансовой гарантией и создаём ваш личный кабинет.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Спокойный учёт</h4>
+        <p>Вы занимаетесь развитием бизнеса, а мы полностью ведём вашу бухгалтерию.</p>
       </div>
     </div>
   </div>
@@ -771,30 +633,41 @@
 <section class="contact" id="contact">
   <div class="container contact-inner">
     <div class="contact-info">
-      <div class="section-eyebrow">Быстрый старт</div>
-      <h2>Получите демо<br>за 2 минуты</h2>
-      <p>Оставьте заявку — покажем систему в деле на ваших реальных примерах. Бесплатно и без обязательств.</p>
+      <div class="section-eyebrow">Оставить заявку</div>
+      <h2>Получите бесплатный<br>экспресс-аудит</h2>
+      <p>Оставьте контакты — проконсультируем по налогообложению вашего бизнеса и бесплатно проверим текущее состояние вашей бухгалтерии.</p>
+      
       <div class="contact-meta">
         <div class="contact-meta-item"><div class="contact-icon"><i data-lucide="map-pin"></i></div>Казахстан, Алматы / Астана</div>
-        <div class="contact-meta-item"><div class="contact-icon"><i data-lucide="clock"></i></div>Ответ в течение 10 минут</div>
-        <div class="contact-meta-item"><div class="contact-icon"><i data-lucide="shield-check"></i></div>Первым 10 компаниям — импорт базы бесплатно</div>
+        <div class="contact-meta-item"><div class="contact-icon"><i data-lucide="clock"></i></div>Ответ специалиста в течение 15 минут</div>
+        <div class="contact-meta-item"><div class="contact-icon"><i data-lucide="shield-check"></i></div>100% Материальная ответственность по договору</div>
       </div>
     </div>
+
     <div class="contact-form-wrap">
       <div class="form-group">
         <label>Ваше имя</label>
-        <input type="text" id="f-name" placeholder="Айгуль Нурсеитова">
+        <input type="text" id="f-name" placeholder="Айдос Сарсенов">
+      </div>
+      <div class="form-group">
+        <label>Название компании или ИП</label>
+        <input type="text" id="f-company" placeholder="ТОО «АлмаТрейд» / ИП Сарсенов">
       </div>
       <div class="form-group">
         <label>Телефон / WhatsApp</label>
         <input type="tel" id="f-phone" placeholder="+7 (777) 000-00-00">
       </div>
       <div class="form-group">
-        <label>Количество сотрудников</label>
-        <select id="f-emp"><option value="1-5">1–5 сотрудников</option><option value="6-15" selected>6–15 сотрудников</option><option value="16-30">16–30 сотрудников</option><option value="30+">Более 30 сотрудников</option></select>
+        <label>Режим налогообложения</label>
+        <select id="f-tax">
+          <option value="ИП Упрощёнка">ИП на упрощёнке</option>
+          <option value="ТОО Упрощёнка" selected>ТОО на упрощёнке</option>
+          <option value="ТОО НДС">ТОО с НДС (Общеустановленный)</option>
+          <option value="Нужна консультация">Нужна консультация по выбору режима</option>
+        </select>
       </div>
-      <button class="form-submit" onclick="submitForm()"><i data-lucide="sparkles" style="width:16px;height:16px;display:inline-block;vertical-align:-2px"></i> Получить доступ к Демо</button>
-      <div class="form-success" id="form-success">Заявка принята! Свяжемся с вами в ближайшее время.</div>
+      <button class="form-submit" onclick="submitForm()"><i data-lucide="sparkles" style="width:16px;height:16px;display:inline-block;vertical-align:-2px"></i> Рассчитать стоимость и получить аудит</button>
+      <div class="form-success" id="form-success">Заявка принята! Главный бухгалтер свяжется с вами в течение 15 минут.</div>
     </div>
   </div>
 </section>
@@ -802,17 +675,16 @@
 <!-- Sticky Mobile Bar -->
 <div class="sticky-mobile-cta">
   <a href="#contact" class="btn btn-solid">
-    <i data-lucide="sparkles"></i> Получить демо
+    <i data-lucide="sparkles"></i> Рассчитать стоимость бухгалтерии
   </a>
 </div>
 
 <!-- CTA BANNER -->
 <div class="cta-banner">
-  <h2>Готовы навести порядок<br>в вашей компании?</h2>
-  <p>Первым 10 компаниям — импорт базы клиентов и настройка шаблонов АВР бесплатно.</p>
+  <h2>Забудьте о штрафах и рутине<br>раз и навсегда</h2>
+  <p>Доверьте бухгалтерию профессионалам с личным онлайн-кабинетом и 100% материальной гарантией.</p>
   <div class="cta-actions">
-    <a href="#contact" class="btn btn-beige btn-lg"><i data-lucide="arrow-right"></i> Оставить заявку</a>
-    <a href="#calculator" class="btn btn-outline-beige btn-lg"><i data-lucide="calculator"></i> Посчитать экономию</a>
+    <a href="#contact" class="btn btn-beige btn-lg"><i data-lucide="arrow-right"></i> Рассчитать стоимость</a>
   </div>
 </div>
 
@@ -822,38 +694,38 @@
     <div class="footer-top">
       <div class="footer-brand">
         <div class="footer-logo">ZhanFinance</div>
-        <p>CRM и учётная система для казахстанских бухгалтерских компаний. Разработано с учётом реальных бизнес-процессов.</p>
+        <p>Профессиональная бухгалтерская компания в Казахстане. Бухгалтерский и налоговый аутсорсинг для ТОО и ИП.</p>
       </div>
       <div class="footer-col">
-        <h4>Продукт</h4>
+        <h4>Навигация</h4>
         <ul>
-          <li><a href="#calculator">Калькулятор ROI</a></li>
-          <li><a href="#features">Возможности</a></li>
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#cabinet">Личный кабинет</a></li>
           <li><a href="#pricing">Тарифы</a></li>
-          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#how">Как работаем</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Модули</h4>
+        <h4>Услуги</h4>
         <ul>
-          <li><a href="#features">CRM</a></li>
-          <li><a href="#features">Документы</a></li>
-          <li><a href="#features">Биллинг</a></li>
-          <li><a href="#features">LMS</a></li>
+          <li><a href="#services">Учёт ТОО и ИП</a></li>
+          <li><a href="#services">Выписка ЭСФ и АВР</a></li>
+          <li><a href="#services">Кадровый учёт</a></li>
+          <li><a href="#services">Сдача ФНО</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Компания</h4>
+        <h4>Контакты</h4>
         <ul>
-          <li><a href="#contact">Контакты</a></li>
-          <li><a href="#contact">Демо</a></li>
-          <li><a href="#contact">Поддержка</a></li>
+          <li><a href="#contact">Заявка на аудит</a></li>
+          <li><a href="#contact">Консультация</a></li>
+          <li><a href="#contact">Алматы / Астана</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 ZhanFinance. Алматы, Казахстан.</p>
-      <p>Разработано в Казахстане</p>
+      <p>© 2026 ZhanFinance. Все права защищены. Казахстан.</p>
+      <p>Бухгалтерский аутсорсинг под ключ</p>
     </div>
   </div>
 </footer>
@@ -867,32 +739,6 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 30);
   });
-
-  // FAQ Accordion
-  function toggleFaq(el) {
-    const item = el.parentElement;
-    item.classList.toggle('open');
-  }
-
-  // Interactive ROI Calculator Logic
-  function updateCalc() {
-    const val = parseInt(document.getElementById('emp-range').value, 10);
-    document.getElementById('emp-count-disp').textContent = val + (val === 1 ? ' человек' : (val >= 2 && val <= 4 ? ' человека' : ' человек'));
-    
-    // Monthly Bitrix cost approx ₸4,000 per user
-    const currentYearlyCost = val * 4000 * 12;
-    // ZhanFinance cost fixed approx ₸85,000/mo = 1,020,000 or Start ₸35,000/mo = 420,000
-    const zhanYearlyCost = val <= 5 ? 420000 : 1020000;
-    const netSavings = Math.max(currentYearlyCost - zhanYearlyCost, 120000);
-    
-    // Saved hours approx 15 hrs per user per mo
-    const savedHours = val * 15;
-
-    document.getElementById('current-cost').textContent = '₸ ' + currentYearlyCost.toLocaleString('ru-RU');
-    document.getElementById('saved-money').textContent = '₸ ' + netSavings.toLocaleString('ru-RU') + ' / год';
-    document.getElementById('saved-hours').textContent = savedHours + ' часов / мес';
-  }
-  updateCalc();
 
   // Form submit
   function submitForm() {
@@ -912,7 +758,7 @@
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.feat-card, .step, .about-num, .plan, .case-card, .pain-card, .shield-card, .faq-item').forEach(el => {
+  document.querySelectorAll('.service-card, .step, .plan, .cab-feat-item').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(24px)';
     el.style.transition = 'opacity .5s ease, transform .5s ease';
