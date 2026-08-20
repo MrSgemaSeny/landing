@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZhanFinance — CRM и учёт для бухгалтерских компаний</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #00562D;
+    --green-80: rgba(0,86,45,0.80);
+    --green-40: rgba(0,86,45,0.40);
+    --green-10: rgba(0,86,45,0.10);
+    --green-05: rgba(0,86,45,0.05);
+    --beige: #F5F5DC;
+    --beige-80: rgba(245,245,220,0.80);
+    --white: #ffffff;
+    --font: 'Inter', system-ui, sans-serif;
+    --r: 16px;
+    --r-lg: 24px;
+    --r-xl: 32px;
+    --r-2xl: 40px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font); background: var(--beige); color: var(--green); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 0 2rem;
+    transition: all .3s;
+  }
+  nav.scrolled {
+    background: rgba(245,245,220,0.90);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--green-10);
+    box-shadow: 0 1px 24px rgba(0,86,45,.06);
+  }
+  .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+  .logo-mark {
+    width: 40px; height: 40px; border-radius: 12px;
+    background: var(--green); display: flex; align-items: center; justify-content: center;
+    color: var(--beige); font-size: 18px; font-weight: 900;
+  }
+  .logo-text { display: flex; flex-direction: column; line-height: 1; }
+  .logo-text strong { font-size: 16px; font-weight: 900; letter-spacing: -.5px; color: var(--green); }
+  .logo-text span { font-size: 10px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--green-80); }
+  .nav-links { display: flex; gap: .25rem; list-style: none; }
+  .nav-links a { padding: .5rem 1rem; border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--green-80); text-decoration: none; transition: all .15s; }
+  .nav-links a:hover { color: var(--green); background: var(--green-05); }
+  .nav-cta { display: flex; align-items: center; gap: .75rem; }
+  .btn { display: inline-flex; align-items: center; gap: .4rem; padding: .6rem 1.4rem; border-radius: 999px; font-size: 14px; font-weight: 700; text-decoration: none; cursor: pointer; border: none; transition: all .2s; }
+  .btn-ghost { background: transparent; color: var(--green); border: 1.5px solid var(--green-40); }
+  .btn-ghost:hover { border-color: var(--green); background: var(--green-05); }
+  .btn-solid { background: var(--green); color: var(--beige); }
+  .btn-solid:hover { background: #003d20; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,86,45,.25); }
+  .btn-beige { background: var(--beige); color: var(--green); }
+  .btn-beige:hover { background: #eeeed0; transform: translateY(-1px); }
+  .btn-outline-beige { background: transparent; color: var(--beige); border: 1.5px solid rgba(245,245,220,.35); }
+  .btn-outline-beige:hover { background: rgba(245,245,220,.1); }
+  .btn-lg { padding: .875rem 2rem; font-size: 15px; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100svh; display: flex; align-items: center;
+    padding: 7rem 2rem 4rem;
+    background: var(--beige);
+    position: relative; overflow: hidden;
+  }
+  .hero-blob {
+    position: absolute; top: -200px; right: -200px;
+    width: 700px; height: 700px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,86,45,.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-blob2 {
+    position: absolute; bottom: -100px; left: -150px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,86,45,.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: var(--green-10); border: 1px solid var(--green-40);
+    border-radius: 999px; padding: .35rem 1rem;
+    font-size: 12px; font-weight: 700; color: var(--green);
+    text-transform: uppercase; letter-spacing: .1em;
+    margin-bottom: 1.5rem;
+  }
+  .hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.5)} }
+  .hero h1 {
+    font-size: clamp(2.75rem, 5.5vw, 4.5rem);
+    font-weight: 900; line-height: .95;
+    letter-spacing: -2.5px; text-transform: uppercase;
+    color: var(--green); margin-bottom: 1.5rem;
+  }
+  .hero h1 em { font-style: normal; color: var(--green-40); }
+  .hero-sub { font-size: 18px; color: var(--green-80); line-height: 1.7; max-width: 480px; margin-bottom: 2.5rem; font-weight: 500; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .hero-stats { display: flex; gap: 2.5rem; margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--green-10); }
+  .hero-stat strong { display: block; font-size: 28px; font-weight: 900; letter-spacing: -1.5px; }
+  .hero-stat span { font-size: 13px; color: var(--green-80); font-weight: 500; }
+
+  /* Hero right — dashboard mockup */
+  .hero-visual { position: relative; }
+  .mockup-card {
+    background: var(--white); border-radius: var(--r-xl);
+    box-shadow: 0 32px 80px rgba(0,86,45,.15), 0 4px 16px rgba(0,86,45,.08);
+    overflow: hidden; border: 1px solid var(--green-10);
+    transform: perspective(1200px) rotateY(-4deg) rotateX(2deg);
+    transition: transform .4s ease;
+  }
+  .mockup-card:hover { transform: perspective(1200px) rotateY(-1deg) rotateX(0deg); }
+  .mock-bar { background: var(--green); padding: .75rem 1rem; display: flex; align-items: center; gap: .5rem; }
+  .mock-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(245,245,220,.3); }
+  .mock-url { flex: 1; background: rgba(245,245,220,.15); border-radius: 6px; padding: .25rem .75rem; font-size: 11px; color: var(--beige-80); margin: 0 .75rem; }
+  .mock-body { display: grid; grid-template-columns: 180px 1fr; min-height: 320px; }
+  .mock-sidebar { background: #003d20; padding: 1rem .75rem; }
+  .mock-logo { color: var(--beige); font-weight: 900; font-size: 13px; padding: .5rem .5rem 1rem; letter-spacing: -.3px; }
+  .mock-nav-item { padding: .45rem .65rem; border-radius: 8px; font-size: 11px; color: rgba(245,245,220,.5); display: flex; align-items: center; gap: .5rem; margin-bottom: .15rem; }
+  .mock-nav-item.active { background: rgba(245,245,220,.15); color: var(--beige); }
+  .mock-main { padding: 1rem; background: var(--beige); }
+  .mock-header { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; margin-bottom: .75rem; color: var(--green); }
+  .mock-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: .4rem; margin-bottom: .6rem; }
+  .mock-card { background: var(--white); border: 1px solid var(--green-10); border-radius: 10px; padding: .6rem; }
+  .mock-card-label { font-size: 9px; color: var(--green-80); font-weight: 600; text-transform: uppercase; letter-spacing: .3px; }
+  .mock-card-val { font-size: 16px; font-weight: 900; letter-spacing: -1px; color: var(--green); margin: .1rem 0; }
+  .mock-card-delta { font-size: 9px; font-weight: 700; }
+  .mock-card-delta.up { color: #16a34a; }
+  .mock-card-delta.warn { color: #ca8a04; }
+  .mock-kanban { display: grid; grid-template-columns: repeat(3,1fr); gap: .35rem; }
+  .mock-col-title { font-size: 8px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; color: var(--green-80); margin-bottom: .25rem; }
+  .mock-task { background: var(--white); border: 1px solid var(--green-10); border-radius: 7px; padding: .35rem .4rem; font-size: 9px; color: var(--green); font-weight: 600; margin-bottom: .2rem; }
+  .mock-tag { display: inline-block; padding: 1px 5px; border-radius: 4px; font-size: 8px; font-weight: 700; margin-top: .1rem; }
+  .mock-tag.crm { background: rgba(0,86,45,.12); color: var(--green); }
+  .mock-tag.doc { background: #fef9c3; color: #854d0e; }
+  .mock-tag.bil { background: #dcfce7; color: #166534; }
+
+  /* floating chips */
+  .hero-chip {
+    position: absolute; background: var(--white);
+    border-radius: 12px; padding: .5rem .75rem;
+    box-shadow: 0 8px 32px rgba(0,86,45,.12); font-size: 11px;
+    font-weight: 700; color: var(--green);
+    display: flex; align-items: center; gap: .4rem;
+    animation: float 4s ease-in-out infinite;
+    border: 1px solid var(--green-10);
+  }
+  .hero-chip.chip1 { top: -16px; right: 40px; animation-delay: 0s; }
+  .hero-chip.chip2 { bottom: 40px; left: -24px; animation-delay: 1.5s; }
+  .chip-dot { width: 8px; height: 8px; border-radius: 50%; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 6rem 2rem; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; color: var(--green); margin-bottom: 1rem; }
+  .section-eyebrow::before { content:''; width: 20px; height: 2px; background: var(--green); border-radius: 2px; }
+  .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; letter-spacing: -1.5px; text-transform: uppercase; line-height: .95; color: var(--green); margin-bottom: 1rem; }
+  .section-sub { font-size: 17px; color: var(--green-80); line-height: 1.7; max-width: 500px; font-weight: 500; }
+
+  /* ── ABOUT STRIP ── */
+  .about { background: var(--white); }
+  .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .about-nums { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+  .about-num { background: var(--beige); border-radius: var(--r-lg); padding: 1.5rem; border: 1px solid var(--green-10); }
+  .about-num strong { font-size: 2.5rem; font-weight: 900; letter-spacing: -2px; color: var(--green); display: block; line-height: 1; }
+  .about-num span { font-size: 13px; color: var(--green-80); font-weight: 500; margin-top: .25rem; display: block; }
+  .about-visual { position: relative; }
+  .about-img-wrap {
+    background: var(--green); border-radius: var(--r-2xl);
+    overflow: hidden; aspect-ratio: 4/5;
+    box-shadow: 0 24px 64px rgba(0,86,45,.2);
+  }
+  .about-img-wrap img { width: 100%; height: 100%; object-fit: cover; opacity: .7; mix-blend-mode: luminosity; }
+  .about-badge-float {
+    position: absolute; bottom: -20px; right: -20px;
+    background: var(--beige); border-radius: var(--r-lg); padding: 1.25rem;
+    box-shadow: 0 12px 32px rgba(0,86,45,.15);
+    border: 1px solid var(--green-10);
+    text-align: center;
+  }
+  .about-badge-float strong { font-size: 1.75rem; font-weight: 900; color: var(--green); display: block; letter-spacing: -1px; }
+  .about-badge-float span { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--green-80); }
+
+  /* ── FEATURES ── */
+  .features { background: var(--beige); }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
+  .feat-card {
+    background: var(--white); border: 1px solid var(--green-10);
+    border-radius: var(--r-xl); padding: 2rem;
+    transition: all .25s ease;
+  }
+  .feat-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,86,45,.1); border-color: var(--green-40); }
+  .feat-icon {
+    width: 48px; height: 48px; border-radius: 14px;
+    background: var(--green); color: var(--beige);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; margin-bottom: 1.25rem;
+  }
+  .feat-card h3 { font-size: 17px; font-weight: 800; color: var(--green); margin-bottom: .5rem; }
+  .feat-card p { font-size: 14px; color: var(--green-80); line-height: 1.7; }
+  .feat-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: 1rem; }
+  .tag { font-size: 11px; font-weight: 700; padding: .25rem .6rem; border-radius: 999px; background: var(--beige); color: var(--green); border: 1px solid var(--green-10); }
+
+  /* ── HOW IT WORKS ── */
+  .how { background: var(--green); color: var(--beige); }
+  .how .section-eyebrow { color: rgba(245,245,220,.6); }
+  .how .section-eyebrow::before { background: rgba(245,245,220,.4); }
+  .how .section-title { color: var(--beige); }
+  .how .section-sub { color: rgba(245,245,220,.7); max-width: 100%; margin-bottom: 3.5rem; }
+  .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; position: relative; }
+  .steps::before {
+    content: ''; position: absolute; top: 28px; left: 14%; right: 14%;
+    height: 1px; background: rgba(245,245,220,.15);
+  }
+  .step { position: relative; z-index: 1; }
+  .step-num {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: rgba(245,245,220,.1); border: 1.5px solid rgba(245,245,220,.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 900; color: var(--beige);
+    margin-bottom: 1.25rem;
+  }
+  .step h4 { font-size: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: -.3px; margin-bottom: .5rem; color: var(--beige); }
+  .step p { font-size: 13px; color: rgba(245,245,220,.65); line-height: 1.65; }
+
+  /* ── ROLES ── */
+  .roles { background: var(--white); }
+  .roles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
+  .role-card { background: var(--beige); border: 1px solid var(--green-10); border-radius: var(--r-xl); padding: 1.75rem; transition: all .2s; }
+  .role-card:hover { border-color: var(--green-40); box-shadow: 0 8px 24px rgba(0,86,45,.08); }
+  .role-pill { display: inline-block; background: var(--green); color: var(--beige); font-size: 10px; font-weight: 800; padding: .25rem .65rem; border-radius: 999px; text-transform: uppercase; letter-spacing: .08em; margin-bottom: .75rem; }
+  .role-card h3 { font-size: 18px; font-weight: 900; text-transform: uppercase; letter-spacing: -.5px; color: var(--green); margin-bottom: .25rem; }
+  .role-card .sub { font-size: 13px; color: var(--green-80); margin-bottom: 1.25rem; font-weight: 500; }
+  .role-card ul { list-style: none; }
+  .role-card li { font-size: 13px; color: var(--green); padding: .35rem 0; border-bottom: 1px solid var(--green-10); padding-left: 1.25rem; position: relative; font-weight: 500; }
+  .role-card li:last-child { border-bottom: none; }
+  .role-card li::before { content: '→'; position: absolute; left: 0; color: var(--green-40); font-size: 11px; top: .45rem; }
+
+  /* ── MODULES (tabs) ── */
+  .modules { background: var(--beige); }
+  .mod-tabs { display: flex; gap: .25rem; border-bottom: 1px solid var(--green-10); margin-bottom: 2.5rem; }
+  .mod-tab {
+    padding: .65rem 1.25rem; font-size: 14px; font-weight: 700;
+    color: var(--green-80); cursor: pointer; border-bottom: 2px solid transparent;
+    border-radius: 8px 8px 0 0; transition: all .15s; text-transform: uppercase; letter-spacing: .05em;
+  }
+  .mod-tab.active { color: var(--green); border-bottom-color: var(--green); background: var(--green-05); }
+  .mod-tab:hover:not(.active) { color: var(--green); background: var(--green-05); }
+  .mod-content { display: none; }
+  .mod-content.active { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .mod-text h3 { font-size: 1.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: -1px; color: var(--green); margin-bottom: .75rem; }
+  .mod-text p { font-size: 15px; color: var(--green-80); line-height: 1.75; margin-bottom: 1.5rem; }
+  .mod-list { list-style: none; }
+  .mod-list li { font-size: 14px; color: var(--green); padding: .5rem 0; border-bottom: 1px solid var(--green-10); padding-left: 1.5rem; position: relative; font-weight: 500; }
+  .mod-list li:last-child { border-bottom: none; }
+  .mod-list li::before { content: ''; position: absolute; left: 0; color: var(--green); font-weight: 900; }
+  .mod-visual { background: var(--white); border: 1px solid var(--green-10); border-radius: var(--r-xl); padding: 1.5rem; }
+  .mod-visual-title { font-size: 10px; font-weight: 800; color: var(--green-80); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 1rem; }
+  .pipeline { display: flex; gap: .5rem; }
+  .pipe-col { flex: 1; }
+  .pipe-head { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; padding: .3rem .4rem; border-radius: 6px; text-align: center; margin-bottom: .35rem; }
+  .pipe-item { background: var(--beige); border: 1px solid var(--green-10); border-radius: 8px; padding: .5rem .6rem; font-size: 10px; margin-bottom: .3rem; color: var(--green); font-weight: 600; }
+  .pipe-item span { display: block; font-size: 9px; color: var(--green-80); font-weight: 500; margin-top: .1rem; }
+  .invoice-row { display: flex; justify-content: space-between; align-items: center; font-size: 10px; padding: .4rem 0; border-bottom: 1px solid var(--green-10); color: var(--green); font-weight: 600; }
+  .invoice-row:last-child { border-bottom: none; }
+  .inv-badge { padding: 2px 7px; border-radius: 999px; font-size: 9px; font-weight: 700; }
+  .inv-paid { background: #dcfce7; color: #166534; }
+  .inv-wait { background: #fef3c7; color: #92400e; }
+  .inv-late { background: #fee2e2; color: #991b1b; }
+  .lms-course { border: 1px solid var(--green-10); border-radius: 10px; padding: .75rem; margin-bottom: .5rem; }
+  .lms-course strong { font-size: 11px; color: var(--green); font-weight: 700; display: block; margin-bottom: .4rem; }
+  .prog-bar { height: 5px; background: var(--green-10); border-radius: 3px; }
+  .prog-fill { height: 5px; background: var(--green); border-radius: 3px; }
+  .prog-info { display: flex; justify-content: space-between; font-size: 10px; color: var(--green-80); margin-top: .25rem; font-weight: 600; }
+  .chart-bars { display: flex; align-items: flex-end; gap: .4rem; height: 120px; }
+  .bar { flex: 1; background: var(--green-10); border-radius: 4px 4px 0 0; position: relative; }
+  .bar-val { position: absolute; top: -16px; left: 0; right: 0; text-align: center; font-size: 9px; font-weight: 800; color: var(--green); }
+  .bar-label { position: absolute; bottom: -18px; left: 0; right: 0; text-align: center; font-size: 9px; color: var(--green-80); font-weight: 600; }
+
+  /* ── PRICING ── */
+  .pricing { background: var(--white); }
+  .pricing-inner { text-align: center; margin-bottom: 3.5rem; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; max-width: 960px; margin: 0 auto; }
+  .plan { background: var(--beige); border: 1px solid var(--green-10); border-radius: var(--r-xl); padding: 2rem; position: relative; }
+  .plan.featured { background: var(--green); color: var(--beige); border-color: var(--green); transform: scale(1.03); box-shadow: 0 24px 64px rgba(0,86,45,.25); }
+  .plan-badge { display: inline-block; background: var(--beige); color: var(--green); font-size: 10px; font-weight: 800; padding: .2rem .65rem; border-radius: 999px; margin-bottom: .75rem; text-transform: uppercase; letter-spacing: .08em; }
+  .plan-name { font-size: 20px; font-weight: 900; text-transform: uppercase; letter-spacing: -.5px; margin-bottom: .25rem; }
+  .plan-desc { font-size: 13px; opacity: .7; margin-bottom: 1.5rem; font-weight: 500; }
+  .plan-price { font-size: 2.25rem; font-weight: 900; letter-spacing: -2px; margin-bottom: .25rem; }
+  .plan-price small { font-size: 14px; font-weight: 500; opacity: .6; letter-spacing: 0; }
+  .plan hr { border: none; border-top: 1px solid; opacity: .12; margin: 1.25rem 0; }
+  .plan ul { list-style: none; margin-bottom: 1.75rem; }
+  .plan li { font-size: 13px; padding: .4rem 0; border-bottom: 1px solid; border-color: var(--green-10); padding-left: 1.4rem; position: relative; font-weight: 500; }
+  .plan.featured li { border-color: rgba(245,245,220,.12); }
+  .plan li:last-child { border-bottom: none; }
+  .plan li::before { content: ''; position: absolute; left: 0; font-weight: 900; color: var(--green); }
+  .plan.featured li::before { color: var(--beige); }
+  .plan li.off::before { content: ''; opacity: .3; }
+  .plan li.off { opacity: .45; }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--beige); }
+  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .contact-info h2 { font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 900; text-transform: uppercase; letter-spacing: -1.5px; line-height: .95; margin-bottom: 1rem; }
+  .contact-info p { font-size: 16px; color: var(--green-80); margin-bottom: 2rem; line-height: 1.7; font-weight: 500; }
+  .contact-meta { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-meta-item { display: flex; align-items: center; gap: .75rem; font-size: 14px; font-weight: 600; }
+  .contact-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--green-10); border: 1px solid var(--green-10); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .contact-form-wrap { background: var(--white); border: 1px solid var(--green-10); border-radius: var(--r-2xl); padding: 2rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+  .form-group { margin-bottom: .85rem; }
+  .form-group label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--green-80); margin-bottom: .4rem; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: .75rem 1rem;
+    border: 1.5px solid var(--green-10); border-radius: var(--r);
+    font-size: 14px; font-family: var(--font); color: var(--green);
+    background: var(--beige); outline: none; transition: border-color .15s; font-weight: 500;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    border-color: var(--green); box-shadow: 0 0 0 3px var(--green-10);
+  }
+  .form-group textarea { height: 90px; resize: vertical; }
+  .form-submit { width: 100%; padding: .875rem; background: var(--green); color: var(--beige); border: none; border-radius: 999px; font-size: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; cursor: pointer; transition: all .2s; margin-top: .25rem; }
+  .form-submit:hover { background: #003d20; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,86,45,.25); }
+  .form-success { display: none; background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; border-radius: var(--r); padding: 1rem; font-size: 14px; font-weight: 700; text-align: center; margin-top: 1rem; }
+
+  /* ── CTA BANNER ── */
+  .cta-banner { background: var(--green); padding: 6rem 2rem; text-align: center; position: relative; overflow: hidden; }
+  .cta-banner::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(245,245,220,.06) 0%, transparent 70%); }
+  .cta-banner h2 { font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 900; text-transform: uppercase; letter-spacing: -1.5px; color: var(--beige); margin-bottom: .75rem; position: relative; }
+  .cta-banner p { font-size: 16px; color: rgba(245,245,220,.65); max-width: 480px; margin: 0 auto 2.5rem; font-weight: 500; position: relative; }
+  .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--green); padding: 4rem 2rem 2rem;
+    margin-top: -2px; /* seam */
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(245,245,220,.1); }
+  .footer-logo { font-size: 20px; font-weight: 900; color: var(--beige); letter-spacing: -1px; text-transform: uppercase; margin-bottom: .5rem; }
+  .footer-brand p { font-size: 13px; color: rgba(245,245,220,.45); line-height: 1.65; max-width: 240px; }
+  .footer-col h4 { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: rgba(245,245,220,.4); margin-bottom: .85rem; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .45rem; }
+  .footer-col a { font-size: 14px; color: rgba(245,245,220,.55); text-decoration: none; font-weight: 500; transition: color .15s; }
+  .footer-col a:hover { color: var(--beige); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; }
+  .footer-bottom p { font-size: 12px; color: rgba(245,245,220,.3); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-inner, .about-inner, .contact-inner, .mod-content.active { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-visual { display: none; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+    .plan.featured { transform: none; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .steps::before { display: none; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 2.5rem; }
+    .nav-links, .nav-cta .btn-ghost { display: none; }
+    .footer-top { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark">Z</div>
+      <div class="logo-text">
+        <strong>Zhan</strong>
+        <span>Finance</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Возможности</a></li>
+      <li><a href="#modules">Модули</a></li>
+      <li><a href="#roles">Роли</a></li>
+      <li><a href="#pricing">Тарифы</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-ghost">Войти</a>
+      <a href="#contact" class="btn btn-solid">Демо</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-blob"></div>
+  <div class="hero-blob2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span></span> Казахстан · B2B платформа</div>
+      <h1>Ваша<br><em>CRM</em><br>для<br>бухгалтеров</h1>
+      <p class="hero-sub">Полная замена Bitrix24, amoCRM и сторонних сервисов. Один кабинет — клиенты, задачи, документы, биллинг, обучение.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-solid btn-lg">Оставить заявку</a>
+        <a href="#features" class="btn btn-ghost btn-lg">Смотреть возможности</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><strong>в 3×</strong><span>быстрее закрываете задачи</span></div>
+        <div class="hero-stat"><strong>0 ₸</strong><span>за каждого сотрудника</span></div>
+        <div class="hero-stat"><strong>1 день</strong><span>и команда работает</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-chip chip1">
+        <div class="chip-dot" style="background:#16a34a"></div>
+        Задача закрыта · АВР выдан
+      </div>
+      <div class="mockup-card">
+        <div class="mock-bar">
+          <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
+          <div class="mock-url">app.zhanfinance.kz/dashboard</div>
+        </div>
+        <div class="mock-body">
+          <div class="mock-sidebar">
+            <div class="mock-logo">ZhanFinance</div>
+            <div class="mock-nav-item active"> Обзор</div>
+            <div class="mock-nav-item"> CRM</div>
+            <div class="mock-nav-item"> Документы</div>
+            <div class="mock-nav-item"> Биллинг</div>
+            <div class="mock-nav-item"> Обучение</div>
+            <div class="mock-nav-item"> Чат</div>
+          </div>
+          <div class="mock-main">
+            <div class="mock-header">Обзор · Август 2025</div>
+            <div class="mock-cards">
+              <div class="mock-card">
+                <div class="mock-card-label">Задачи</div>
+                <div class="mock-card-val">48</div>
+                <div class="mock-card-delta up">+12% к июлю</div>
+              </div>
+              <div class="mock-card">
+                <div class="mock-card-label">Выручка</div>
+                <div class="mock-card-val">₸855K</div>
+                <div class="mock-card-delta up">+8%</div>
+              </div>
+              <div class="mock-card">
+                <div class="mock-card-label">Просрочено</div>
+                <div class="mock-card-val">3</div>
+                <div class="mock-card-delta warn">-2 к июлю</div>
+              </div>
+            </div>
+            <div class="mock-kanban">
+              <div>
+                <div class="mock-col-title">Новые</div>
+                <div class="mock-task">Регистрация ТОО <div class="mock-tag crm">CRM</div></div>
+                <div class="mock-task">ФНО 700.00 <div class="mock-tag doc">Docs</div></div>
+              </div>
+              <div>
+                <div class="mock-col-title">В работе</div>
+                <div class="mock-task">Квартальный АВР <div class="mock-tag doc">Docs</div></div>
+                <div class="mock-task">Инвойс #083 <div class="mock-tag bil">Billing</div></div>
+              </div>
+              <div>
+                <div class="mock-col-title">Готово</div>
+                <div class="mock-task">Годовой отчёт <div class="mock-tag crm">CRM</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-chip chip2">
+        <div class="chip-dot" style="background:#ca8a04"></div>
+        INV-2025-083 · ₸320,000
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="container about-inner">
+    <div>
+      <div class="section-eyebrow">О платформе</div>
+      <h2 class="section-title">Не ещё одна<br>CRM.<br><em style="font-style:normal;color:var(--green-40)">Своя.</em></h2>
+      <p class="section-sub">Zhan Finance — это полная IT-инфраструктура под ключ. Отдаём вам исходный код, схему БД и бизнес-логику. Никакой абонентской платы за пользователей, никакой зависимости от вендора.</p>
+      <div class="about-nums">
+        <div class="about-num"><strong>в 3×</strong><span>меньше рутины</span></div>
+        <div class="about-num"><strong>6</strong><span>ролей и прав</span></div>
+        <div class="about-num"><strong>1 день</strong><span>внедрение под ключ</span></div>
+        <div class="about-num"><strong>1 день</strong><span>старт работы</span></div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <div class="about-img-wrap">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop" alt="Команда">
+      </div>
+      <div class="about-badge-float">
+        <strong>100%</strong>
+        <span>Уже работает</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-eyebrow">Возможности</div>
+    <h2 class="section-title">Всё что нужно<br>бухгалтерской компании</h2>
+    <p class="section-sub">Никаких лишних кликов. Только то, что реально ускоряет работу.</p>
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-icon"></div>
+        <h3>CRM и воронка задач</h3>
+        <p>Видите всех клиентов, задачи и статусы в одном месте. Каждый сотрудник работает только со своей очередью.</p>
+        <div class="feat-tags"><span class="tag">Доска задач</span><span class="tag">Очередь</span><span class="tag">История</span></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon"></div>
+        <h3>Документооборот</h3>
+        <p>АВР, акты и договоры по шаблону за секунды. Документы хранятся в системе — клиент скачивает из своего кабинета.</p>
+        <div class="feat-tags"><span class="tag">АВР</span><span class="tag">Акты</span><span class="tag">Шаблоны</span></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon"></div>
+        <h3>Биллинг и инвойсы</h3>
+        <p>Выставляете счёт в два клика. Клиент получает PDF на почту и оплачивает через Kaspi Pay или Halyk Epay.</p>
+        <div class="feat-tags"><span class="tag">Инвойсы</span><span class="tag">Подписки</span><span class="tag">Kaspi Pay</span></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon"></div>
+        <h3>LMS-обучение</h3>
+        <p>Курсы → Разделы → Уроки. Автоматическая выдача сертификатов при 100% прохождении. Роли куратора и обучаемого.</p>
+        <div class="feat-tags"><span class="tag">Курсы</span><span class="tag">Сертификаты</span><span class="tag">Прогресс</span></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon"></div>
+        <h3>Real-time чат</h3>
+        <p>Общаетесь с клиентами прямо в системе. Вся история переписки хранится рядом с задачей — не нужно искать в Telegram.</p>
+        <div class="feat-tags"><span class="tag">Чат</span><span class="tag">История</span><span class="tag">Файлы</span></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon"></div>
+        <h3>Безопасность и 2FA</h3>
+        <p>Данные клиентов надёжно защищены. Двухфакторная аутентификация, раздельный доступ по ролям, вход через Google.</p>
+        <div class="feat-tags"><span class="tag">2FA</span><span class="tag">Google-вход</span><span class="tag">Ролевой доступ</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="container">
+    <div class="section-eyebrow">Как это работает</div>
+    <h2 class="section-title" style="color:var(--beige)">Старт<br>за один день</h2>
+    <p class="section-sub">Никаких сложных внедрений. Настраиваем систему под вашу компанию и передаём доступ.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Оставляете заявку</h4>
+        <p>Заполняете форму — мы связываемся в течение рабочего дня</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Демо и онбординг</h4>
+        <p>Показываем систему, настраиваем под ваши процессы и роли</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Импорт клиентов</h4>
+        <p>Переносим ваши данные — клиенты, услуги, шаблоны документов</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Работаете</h4>
+        <p>Команда работает в системе, вы видите всё в реальном времени</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROLES -->
+<section class="roles" id="roles">
+  <div class="container">
+    <div class="section-eyebrow">Ролевая модель</div>
+    <h2 class="section-title">Каждый видит<br>только своё</h2>
+    <p class="section-sub">Жёсткое разграничение доступа на уровне приложения. Клиент не видит чужих задач. Сотрудник не видит чужих клиентов.</p>
+    <div class="roles-grid">
+      <div class="role-card">
+        <div class="role-pill">Admin</div>
+        <h3>Admin</h3>
+        <p class="sub">Полный доступ к системе</p>
+        <ul>
+          <li>Управление пользователями и ролями</li>
+          <li>Настройка стадий воронки</li>
+          <li>Все задачи, инвойсы и клиенты</li>
+          <li>Просмотр лидов из лендинга</li>
+        </ul>
+      </div>
+      <div class="role-card">
+        <div class="role-pill">Employee</div>
+        <h3>Employee</h3>
+        <p class="sub">Сотрудник компании</p>
+        <ul>
+          <li>Работа с назначенными задачами</li>
+          <li>Берёт новые задачи из общей очереди</li>
+          <li>Загрузка и генерация документов</li>
+          <li>Чат с клиентами и коллегами</li>
+        </ul>
+      </div>
+      <div class="role-card">
+        <div class="role-pill">Client</div>
+        <h3>Client</h3>
+        <p class="sub">Клиент бухгалтерской компании</p>
+        <ul>
+          <li>Профиль и статус своих задач</li>
+          <li>Просмотр своих документов</li>
+          <li>Оплата инвойсов</li>
+          <li>Чат с ответственным сотрудником</li>
+        </ul>
+      </div>
+      <div class="role-card">
+        <div class="role-pill">Advisor</div>
+        <h3>Advisor</h3>
+        <p class="sub">Старший менеджер / советник</p>
+        <ul>
+          <li>Сводный дашборд по компании</li>
+          <li>Нагрузка и распределение задач</li>
+          <li>Сквозной доступ к клиентам и чатам</li>
+        </ul>
+      </div>
+      <div class="role-card">
+        <div class="role-pill">Curator</div>
+        <h3>Curator</h3>
+        <p class="sub">Куратор курсов LMS</p>
+        <ul>
+          <li>Создание и публикация курсов</li>
+          <li>Управление разделами и уроками</li>
+          <li>Мониторинг прогресса обучаемых</li>
+        </ul>
+      </div>
+      <div class="role-card">
+        <div class="role-pill">Learner</div>
+        <h3>Learner</h3>
+        <p class="sub">Обучаемый (LMS)</p>
+        <ul>
+          <li>Запись на доступные курсы</li>
+          <li>Прохождение уроков и прогресс</li>
+          <li>Получение сертификата при 100%</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section class="modules" id="modules">
+  <div class="container">
+    <div class="section-eyebrow">Модули</div>
+    <h2 class="section-title">Детали системы</h2>
+    <div class="mod-tabs">
+      <div class="mod-tab active" onclick="switchTab(this,'crm')">CRM</div>
+      <div class="mod-tab" onclick="switchTab(this,'billing')">Биллинг</div>
+      <div class="mod-tab" onclick="switchTab(this,'lms')">Обучение</div>
+      <div class="mod-tab" onclick="switchTab(this,'advisor')">Advisor</div>
+    </div>
+    <!-- CRM -->
+    <div id="tab-crm" class="mod-content active">
+      <div class="mod-text">
+        <h3>Задачи и клиенты</h3>
+        <p>От первого обращения до закрытой задачи — всё в одном месте. Видите статус каждого клиента в реальном времени.</p>
+        <ul class="mod-list">
+          <li>Доска задач с настраиваемыми стадиями</li>
+          <li>Общая очередь для входящих обращений</li>
+          <li>Подзадачи, комментарии, теги</li>
+          <li>История изменений по каждой задаче</li>
+          <li>История изменений по каждому клиенту</li>
+          <li>Автоматический возврат упущенных задач</li>
+        </ul>
+      </div>
+      <div class="mod-visual">
+        <div class="mod-visual-title">Воронка продаж — пример стадий</div>
+        <div class="pipeline">
+          <div class="pipe-col">
+            <div class="pipe-head" style="background:rgba(0,86,45,.1);color:var(--green)">Новая</div>
+            <div class="pipe-item">Регистрация ТОО<span>ИП Садыков · сегодня</span></div>
+            <div class="pipe-item">Налоговый отчёт<span>ТОО АлмаТрейд</span></div>
+          </div>
+          <div class="pipe-col">
+            <div class="pipe-head" style="background:#fef3c7;color:#92400e">В работе</div>
+            <div class="pipe-item">Квартальный ФНО<span>Асем Нурсеитова</span></div>
+          </div>
+          <div class="pipe-col">
+            <div class="pipe-head" style="background:#dcfce7;color:#166534">Сдано</div>
+            <div class="pipe-item">Годовой отчёт<span>ДарСтрой · 12 авг</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- BILLING -->
+    <div id="tab-billing" class="mod-content">
+      <div class="mod-text">
+        <h3>Биллинг и инвойсы</h3>
+        <p>Полный цикл финансовых взаиморасчётов: от каталога услуг до выдачи PDF-инвойса и автоматического напоминания об оплате.</p>
+        <ul class="mod-list">
+          <li>Каталог услуг с описанием и стоимостью</li>
+          <li>Подписки и связь с задачами CRM</li>
+          <li>Статусы: черновик → выставлен → оплачен → просрочен</li>
+          <li>Автоматическое напоминание о просроченных счетах</li>
+          <li>PDF-счёт клиенту на почту</li>
+          <li>Клиент видит только свои счета</li>
+        </ul>
+      </div>
+      <div class="mod-visual">
+        <div class="mod-visual-title">Инвойсы</div>
+        <div class="invoice-row"><span>INV-2025-081 · ТОО АлмаТрейд</span><span>₸ 450,000</span><span class="inv-badge inv-paid">Оплачен</span></div>
+        <div class="invoice-row"><span>INV-2025-082 · ИП Нурсеитова</span><span>₸ 85,000</span><span class="inv-badge inv-wait">Ожидание</span></div>
+        <div class="invoice-row"><span>INV-2025-083 · ТОО ДарСтрой</span><span>₸ 320,000</span><span class="inv-badge inv-paid">Оплачен</span></div>
+        <div class="invoice-row"><span>INV-2025-079 · ИП Жаксыбеков</span><span>₸ 120,000</span><span class="inv-badge inv-late">Просрочен</span></div>
+        <div style="margin-top:1rem;padding-top:.75rem;border-top:1px solid var(--green-10);display:flex;justify-content:space-between;font-size:11px;">
+          <span style="color:var(--green-80);font-weight:600">Скоро: Kaspi Pay, Halyk Epay</span>
+          <span style="color:var(--green);font-weight:800">PDF ↓</span>
+        </div>
+      </div>
+    </div>
+    <!-- LMS -->
+    <div id="tab-lms" class="mod-content">
+      <div class="mod-text">
+        <h3>LMS — обучение сотрудников</h3>
+        <p>Полный цикл онлайн-обучения: создание курсов, отслеживание прогресса, автоматическая выдача сертификатов.</p>
+        <ul class="mod-list">
+          <li>Иерархия: Курс → Раздел → Урок → Блок</li>
+          <li>Роли CURATOR и LEARNER с разграничением</li>
+          <li>Отслеживание прогресса по урокам</li>
+          <li>Сертификат автоматически при 100%</li>
+          <li>Запись на курсы, история прохождений</li>
+          <li>Тесты и квизы (скоро)</li>
+        </ul>
+      </div>
+      <div class="mod-visual">
+        <div class="mod-visual-title">Прогресс обучения</div>
+        <div class="lms-course">
+          <strong>Налоговый учёт в Казахстане 2025</strong>
+          <div class="prog-bar"><div class="prog-fill" style="width:75%"></div></div>
+          <div class="prog-info"><span>6 из 8 уроков</span><span>75%</span></div>
+        </div>
+        <div class="lms-course">
+          <strong>1С:Бухгалтерия для практиков</strong>
+          <div class="prog-bar"><div class="prog-fill" style="width:100%;background:#16a34a"></div></div>
+          <div class="prog-info"><span>Завершён </span><span style="color:#16a34a">Сертификат выдан</span></div>
+        </div>
+        <div class="lms-course">
+          <strong>ФНО 700.00: заполнение и сдача</strong>
+          <div class="prog-bar"><div class="prog-fill" style="width:30%"></div></div>
+          <div class="prog-info"><span>3 из 10 уроков</span><span>30%</span></div>
+        </div>
+      </div>
+    </div>
+    <!-- ADVISOR -->
+    <div id="tab-advisor" class="mod-content">
+      <div class="mod-text">
+        <h3>Advisor — сквозной контроль</h3>
+        <p>Роль для руководителя. Полная картина по компании: кто чем занят, где узкие места, как распределена нагрузка.</p>
+        <ul class="mod-list">
+          <li>Advisor Overview — дашборд по всей компании</li>
+          <li>Нагрузка и распределение по сотрудникам</li>
+          <li>Доступ ко всем клиентам и задачам</li>
+          <li>Доступ к чатам сотрудников и клиентов</li>
+          <li>Не затрагивает права других сотрудников</li>
+        </ul>
+      </div>
+      <div class="mod-visual">
+        <div class="mod-visual-title">Нагрузка по сотрудникам · Август 2025</div>
+        <div class="chart-bars" style="margin-top:.5rem;margin-bottom:1.5rem">
+          <div class="bar" style="height:70%"><div class="bar-val">24</div><div class="bar-label">Алия</div></div>
+          <div class="bar" style="height:90%;background:var(--green-40)"><div class="bar-val">31</div><div class="bar-label">Мадина</div></div>
+          <div class="bar" style="height:50%"><div class="bar-val">17</div><div class="bar-label">Жанар</div></div>
+          <div class="bar" style="height:80%;background:var(--green-40)"><div class="bar-val">28</div><div class="bar-label">Динара</div></div>
+          <div class="bar" style="height:40%"><div class="bar-val">14</div><div class="bar-label">Айгуль</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="pricing-inner">
+      <div class="section-eyebrow" style="justify-content:center">Тарифы</div>
+      <h2 class="section-title">Прозрачное<br>ценообразование</h2>
+      <p class="section-sub" style="margin: .75rem auto 0; text-align:center">Без скрытых платежей. Цена зависит от количества сотрудников и модулей.</p>
+    </div>
+    <div class="pricing-grid">
+      <!-- СТАРТ -->
+      <div class="plan">
+        <div class="plan-name">Старт</div>
+        <div class="plan-desc">Для небольших компаний до 5 сотрудников</div>
+        <div class="plan-price">₸ 35,000 <small>/ месяц</small></div>
+        <hr>
+        <ul>
+          <li>CRM и доска задач</li>
+          <li>Документы и генерация АВР</li>
+          <li>Биллинг и инвойсы</li>
+          <li>Внутренний чат</li>
+          <li class="off">LMS-обучение</li>
+          <li class="off">Advisor-роль</li>
+          <li class="off">2FA</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost" style="width:100%;justify-content:center">Выбрать</a>
+      </div>
+      <!-- БИЗНЕС -->
+      <div class="plan featured">
+        <div class="plan-badge">Популярный</div>
+        <div class="plan-name">Бизнес</div>
+        <div class="plan-desc">Оптимально для компаний 5–20 сотрудников</div>
+        <div class="plan-price">₸ 85,000 <small>/ месяц</small></div>
+        <hr style="border-color:rgba(245,245,220,.2)">
+        <ul>
+          <li>Всё из тарифа «Старт»</li>
+          <li>LMS с сертификатами</li>
+          <li>Advisor-роль</li>
+          <li>2FA и усиленная безопасность</li>
+          <li>Email-уведомления</li>
+          <li>PDF-инвойсы</li>
+          <li class="off">Интеграция с 1С</li>
+        </ul>
+        <a href="#contact" class="btn btn-beige" style="width:100%;justify-content:center">Выбрать</a>
+      </div>
+      <!-- КОРПОРАТИВНЫЙ -->
+      <div class="plan">
+        <div class="plan-name">Корпоративный</div>
+        <div class="plan-desc">Для компаний от 20 сотрудников</div>
+        <div class="plan-price">По запросу</div>
+        <hr>
+        <ul>
+          <li>Всё из тарифа «Бизнес»</li>
+          <li>Интеграция с 1С:Бухгалтерия</li>
+          <li>Kaspi Pay и Halyk Epay</li>
+          <li>Кастомные отчёты и аналитика</li>
+          <li>Приоритетная поддержка + SLA</li>
+          <li>Кастомный домен и CDN</li>
+          <li>Полный исходный код</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost" style="width:100%;justify-content:center">Связаться</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container contact-inner">
+    <div class="contact-info">
+      <div class="section-eyebrow">Контакты</div>
+      <h2>Оставьте<br>заявку</h2>
+      <p>Расскажите о вашей компании — свяжемся и покажем систему в деле. Бесплатно и без обязательств.</p>
+      <div class="contact-meta">
+        <div class="contact-meta-item"><div class="contact-icon"></div>Казахстан, Алматы</div>
+        <div class="contact-meta-item"><div class="contact-icon">⏱</div>Ответ в течение 1 рабочего дня</div>
+        <div class="contact-meta-item"><div class="contact-icon"></div>Данные не передаются третьим лицам</div>
+      </div>
+    </div>
+    <div class="contact-form-wrap">
+      <div class="form-row">
+        <div class="form-group"><label>Ваше имя</label><input type="text" id="f-name" placeholder="Айгуль Нурсеитова"></div>
+        <div class="form-group"><label>Компания</label><input type="text" placeholder="ТОО «АлмаБух»"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Телефон</label><input type="tel" placeholder="+7 (777) 000-00-00"></div>
+        <div class="form-group"><label>Email</label><input type="email" id="f-email" placeholder="info@almabuh.kz"></div>
+      </div>
+      <div class="form-group">
+        <label>Количество сотрудников</label>
+        <select><option value="">Выберите...</option><option>1–5</option><option>6–15</option><option>16–30</option><option>Более 30</option></select>
+      </div>
+      <div class="form-group">
+        <label>Что хотите автоматизировать?</label>
+        <textarea placeholder="Расскажите о задачах: CRM, документы, биллинг, обучение..."></textarea>
+      </div>
+      <button class="form-submit" onclick="submitForm()">Отправить заявку</button>
+      <div class="form-success" id="form-success"> Заявка принята! Свяжемся с вами в течение рабочего дня.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Готовы упорядочить<br>работу компании?</h2>
+  <p>Оставьте заявку — настроим систему под ваши процессы и передадим доступ.</p>
+  <div class="cta-actions">
+    <a href="#contact" class="btn btn-beige btn-lg">Оставить заявку</a>
+    <a href="#features" class="btn btn-outline-beige btn-lg">Подробнее о системе</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">ZhanFinance</div>
+        <p>CRM и учётная система для казахстанских бухгалтерских компаний. Разработано с учётом реальных бизнес-процессов.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Продукт</h4>
+        <ul>
+          <li><a href="#features">Возможности</a></li>
+          <li><a href="#modules">Модули</a></li>
+          <li><a href="#roles">Роли</a></li>
+          <li><a href="#pricing">Тарифы</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Модули</h4>
+        <ul>
+          <li><a href="#modules">CRM</a></li>
+          <li><a href="#modules">Документы</a></li>
+          <li><a href="#modules">Биллинг</a></li>
+          <li><a href="#modules">LMS</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Компания</h4>
+        <ul>
+          <li><a href="#contact">Контакты</a></li>
+          <li><a href="#contact">Демо</a></li>
+          <li><a href="#contact">Поддержка</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 ZhanFinance. Алматы, Казахстан.</p>
+      <p>Разработано в Казахстане</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  // Module tabs
+  function switchTab(el, id) {
+    document.querySelectorAll('.mod-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.mod-content').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('tab-' + id).classList.add('active');
+  }
+
+  // Form
+  function submitForm() {
+    const name = document.getElementById('f-name').value.trim();
+    const email = document.getElementById('f-email').value.trim();
+    if (!name || !email) { alert('Заполните имя и email.'); return; }
+    document.getElementById('form-success').style.display = 'block';
+    document.querySelector('.form-submit').disabled = true;
+    document.querySelector('.form-submit').textContent = 'Отправлено ';
+  }
+
+  // Scroll-reveal (lightweight)
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.feat-card, .role-card, .step, .about-num, .plan').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity .5s ease, transform .5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
