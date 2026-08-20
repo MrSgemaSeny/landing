@@ -299,21 +299,27 @@
     .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
   }
   @media (max-width: 640px) {
+    nav { padding: 0 1rem; }
+    .nav-inner { height: 60px; }
+    .nav-links, .nav-cta .btn-ghost { display: none; }
+    .nav-cta .btn-solid { font-size: 12px; padding: .45rem .85rem; }
     section { padding: 3.5rem 1.25rem; }
     .hero { padding: 5.5rem 1.25rem 3rem; min-height: auto; }
-    .hero h1 { font-size: 2.25rem; letter-spacing: -1.5px; }
+    .hero-badge { font-size: 11px; padding: .3rem .75rem; }
+    .hero h1 { font-size: 2rem; letter-spacing: -1px; line-height: 1.1; }
     .hero-sub { font-size: 15px; margin-bottom: 1.5rem; }
     .hero-actions { flex-direction: column; width: 100%; }
     .hero-actions .btn { width: 100%; justify-content: center; }
     .hero-stats { grid-template-columns: 1fr 1fr; display: grid; gap: 1rem; margin-top: 1.5rem; padding-top: 1.25rem; }
     .hero-stat strong { font-size: 20px; }
     .hero-stat span { font-size: 12px; }
+    .services-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .service-card { padding: 1.5rem; }
     .mock-body { grid-template-columns: 1fr; }
     .mock-sidebar { display: none; }
     .hero-chip.chip1, .hero-chip.chip2 { display: none; }
-    .nav-links, .nav-cta .btn-ghost { display: none; }
-    .nav-inner { height: 60px; padding: 0 .5rem; }
     .footer-top { grid-template-columns: 1fr; gap: 1.75rem; }
+    .footer-bottom { flex-direction: column; gap: .5rem; text-align: center; }
     .form-group input, .form-group textarea, .form-group select { font-size: 16px; }
     .contact-form-wrap { padding: 1.5rem 1.25rem; }
     .plan { padding: 1.5rem; }
