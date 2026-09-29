@@ -65,6 +65,7 @@
 <div class="top" id="top">
   <span id="name"></span>
   <div class="tools">
+    <button id="to-start" type="button">В начало</button>
     <button id="fm" type="button" aria-label="Уменьшить шрифт">A&minus;</button>
     <button id="fp" type="button" aria-label="Увеличить шрифт">A+</button>
     <button id="th" type="button" aria-label="Сменить тему">Тема</button>
@@ -227,6 +228,7 @@
   });
 
   function setFs(v) { fs = Math.max(0.8, Math.min(1.5, v)); store('book-fs', fs); layout(); }
+  $('to-start').onclick = function () { setPage(0); };
   $('fm').onclick = function () { setFs(fs - 0.08); };
   $('fp').onclick = function () { setFs(fs + 0.08); };
   $('th').onclick = function () { ti = (ti + 1) % themes.length; document.body.dataset.t = themes[ti]; store('book-theme', themes[ti]); };
@@ -243,7 +245,7 @@
   // Если файла нет или страница открыта локально с диска, показываем текст, вшитый в этот HTML.
   var ready = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
   ready.then(function () {
-    return fetch('book.md').then(function (r) { if (!r.ok) throw 0; return r.text(); }).catch(function () { return raw; });
+    return fetch('book.md?v=' + Date.now(), { cache: 'no-store' }).then(function (r) { if (!r.ok) throw 0; return r.text(); }).catch(function () { return raw; });
   }).then(function (text) { load(text, '', true); });
 })();
 </script>
