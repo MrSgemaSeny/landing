@@ -1,778 +1,251 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZhanFinance — Бухгалтерские услуги и аутсорсинг для ТОО и ИП в Казахстане</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/lucide@latest"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Война и тайная любовь — Мурат Орынбасар Темурулы</title>
+<meta name="description" content="«Война и тайная любовь» — исторический роман Мурата Орынбасара Темурулы.">
+<meta property="og:title" content="Война и тайная любовь">
+<meta property="og:description" content="«Война и тайная любовь» — Мурат Орынбасар Темурулы">
+<meta property="og:type" content="book">
 <style>
-  :root {
-    --green: #00562D;
-    --green-80: rgba(0,86,45,0.80);
-    --green-40: rgba(0,86,45,0.40);
-    --green-10: rgba(0,86,45,0.10);
-    --green-05: rgba(0,86,45,0.05);
-    --beige: #F5F5DC;
-    --beige-80: rgba(245,245,220,0.80);
-    --white: #ffffff;
-    --font: 'Inter', system-ui, sans-serif;
-    --r: 16px;
-    --r-lg: 24px;
-    --r-xl: 32px;
-    --r-2xl: 40px;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { font-family: var(--font); background: var(--beige); color: var(--green); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  :root { --bg:#ffffff; --paper:#ffffff; --ink:#222; --muted:#8c8c8c; --line:#e6e6e6; --edge:#d9d9d9; }
+  body[data-t="sepia"] { --bg:#efe6d2; --paper:#f8f1e0; --ink:#3b2f22; --muted:#95866f; --line:#e2d6bb; --edge:#d3c4a3; }
+  body[data-t="dark"]  { --bg:#16171a; --paper:#1e2024; --ink:#c9c9c6; --muted:#6f7076; --line:#2c2e33; --edge:#33363c; }
+  * { box-sizing:border-box; }
+  html, body { height:100%; margin:0; }
+  body { height:100dvh; display:flex; flex-direction:column; align-items:center; background:var(--bg); color:var(--ink);
+         font-family:Georgia,"Times New Roman",serif; transition:background .2s,color .2s; overflow:hidden; }
+  button, input { font-family:system-ui,-apple-system,"Segoe UI",sans-serif; }
 
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 0 2rem;
-    transition: all .3s;
-  }
-  nav.scrolled {
-    background: rgba(245,245,220,0.94);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--green-10);
-    box-shadow: 0 1px 24px rgba(0,86,45,.06);
-  }
-  .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 68px; }
-  .logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
-  .logo-mark {
-    width: 40px; height: 40px; border-radius: 12px;
-    background: var(--green); display: flex; align-items: center; justify-content: center;
-    color: var(--beige); font-size: 18px; font-weight: 900;
-  }
-  .logo-text { display: flex; flex-direction: column; line-height: 1; }
-  .logo-text strong { font-size: 16px; font-weight: 900; letter-spacing: -.5px; color: var(--green); }
-  .logo-text span { font-size: 10px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--green-80); }
-  .nav-links { display: flex; gap: .25rem; list-style: none; }
-  .nav-links a { padding: .5rem 1rem; border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--green-80); text-decoration: none; transition: all .15s; }
-  .nav-links a:hover { color: var(--green); background: var(--green-05); }
-  .nav-cta { display: flex; align-items: center; gap: .75rem; }
-  .btn { display: inline-flex; align-items: center; gap: .4rem; padding: .65rem 1.4rem; border-radius: 999px; font-size: 14px; font-weight: 700; text-decoration: none; cursor: pointer; border: none; transition: all .2s; }
-  .btn svg { width: 16px; height: 16px; stroke-width: 2.2px; }
-  .btn-ghost { background: transparent; color: var(--green); border: 1.5px solid var(--green-40); }
-  .btn-ghost:hover { border-color: var(--green); background: var(--green-05); }
-  .btn-solid { background: var(--green); color: var(--beige); }
-  .btn-solid:hover { background: #003d20; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,86,45,.25); }
-  .btn-beige { background: var(--beige); color: var(--green); }
-  .btn-beige:hover { background: #eeeed0; transform: translateY(-1px); }
-  .btn-outline-beige { background: transparent; color: var(--beige); border: 1.5px solid rgba(245,245,220,.35); }
-  .btn-outline-beige:hover { background: rgba(245,245,220,.1); }
-  .btn-lg { padding: .875rem 2rem; font-size: 15px; }
+  .top { width:100%; display:flex; justify-content:space-between; align-items:center; gap:12px; padding:10px 16px; padding-top:max(10px,env(safe-area-inset-top)); font:14px system-ui,sans-serif; color:var(--muted); }
+  #name { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0; }
+  .tools { display:flex; gap:6px; flex-shrink:0; }
+  .tools button { font-size:13px; min-width:34px; height:32px; padding:0 10px; color:var(--ink); background:transparent; border:1px solid var(--line); border-radius:8px; cursor:pointer; }
+  .tools button:hover { border-color:var(--muted); }
 
-  /* ── HERO ── */
-  .hero {
-    min-height: 100svh; display: flex; align-items: center;
-    padding: 7rem 2rem 4rem;
-    background: var(--beige);
-    position: relative; overflow: hidden;
-  }
-  .hero-blob {
-    position: absolute; top: -200px; right: -200px;
-    width: 700px; height: 700px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(0,86,45,.07) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero-blob2 {
-    position: absolute; bottom: -100px; left: -150px;
-    width: 500px; height: 500px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(0,86,45,.05) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1; }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: .5rem;
-    background: var(--green-10); border: 1px solid var(--green-40);
-    border-radius: 999px; padding: .35rem 1rem;
-    font-size: 12px; font-weight: 700; color: var(--green);
-    text-transform: uppercase; letter-spacing: .08em;
-    margin-bottom: 1.5rem;
-  }
-  .hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s ease-in-out infinite; }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.5)} }
-  .hero h1 {
-    font-size: clamp(2.5rem, 5vw, 3.75rem);
-    font-weight: 900; line-height: 1.05;
-    letter-spacing: -2px; text-transform: uppercase;
-    color: var(--green); margin-bottom: 1.5rem;
-  }
-  .hero h1 em { font-style: normal; color: var(--green-40); }
-  .hero-sub { font-size: 17px; color: var(--green-80); line-height: 1.7; max-width: 500px; margin-bottom: 2.25rem; font-weight: 500; }
-  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .hero-stats { display: flex; gap: 2.5rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--green-10); }
-  .hero-stat strong { display: block; font-size: 26px; font-weight: 900; letter-spacing: -1.5px; color: var(--green); }
-  .hero-stat span { font-size: 13px; color: var(--green-80); font-weight: 500; }
+  .stage { flex:1; min-height:0; width:100%; display:flex; align-items:center; justify-content:center; gap:8px; }
+  .arrow { font-size:26px; line-height:1; color:var(--muted); background:none; border:0; cursor:pointer; padding:14px 10px; border-radius:10px; flex-shrink:0; }
+  .arrow:hover:not(:disabled) { color:var(--ink); background:var(--line); }
+  .arrow:disabled { opacity:.2; cursor:default; }
 
-  /* Hero right — mockup */
-  .hero-visual { position: relative; }
-  .mockup-card {
-    background: var(--white); border-radius: var(--r-xl);
-    box-shadow: 0 32px 80px rgba(0,86,45,.15), 0 4px 16px rgba(0,86,45,.08);
-    overflow: hidden; border: 1px solid var(--green-10);
-    transform: perspective(1200px) rotateY(-4deg) rotateX(2deg);
-    transition: transform .4s ease;
-  }
-  .mockup-card:hover { transform: perspective(1200px) rotateY(-1deg) rotateX(0deg); }
-  .mock-bar { background: var(--green); padding: .75rem 1rem; display: flex; align-items: center; gap: .5rem; }
-  .mock-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(245,245,220,.3); }
-  .mock-url { flex: 1; background: rgba(245,245,220,.15); border-radius: 6px; padding: .25rem .75rem; font-size: 11px; color: var(--beige-80); margin: 0 .75rem; }
-  .mock-body { display: grid; grid-template-columns: 180px 1fr; min-height: 320px; }
-  .mock-sidebar { background: #003d20; padding: 1rem .75rem; }
-  .mock-logo { color: var(--beige); font-weight: 900; font-size: 13px; padding: .5rem .5rem 1rem; letter-spacing: -.3px; }
-  .mock-nav-item { padding: .45rem .65rem; border-radius: 8px; font-size: 11px; color: rgba(245,245,220,.5); display: flex; align-items: center; gap: .5rem; margin-bottom: .15rem; }
-  .mock-nav-item svg { width: 13px; height: 13px; stroke-width: 2px; flex-shrink: 0; }
-  .mock-nav-item.active { background: rgba(245,245,220,.15); color: var(--beige); }
-  .mock-main { padding: 1rem; background: var(--beige); }
-  .mock-header { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; margin-bottom: .75rem; color: var(--green); }
-  .mock-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: .4rem; margin-bottom: .6rem; }
-  .mock-card { background: var(--white); border: 1px solid var(--green-10); border-radius: 10px; padding: .6rem; }
-  .mock-card-label { font-size: 9px; color: var(--green-80); font-weight: 600; text-transform: uppercase; letter-spacing: .3px; }
-  .mock-card-val { font-size: 16px; font-weight: 900; letter-spacing: -1px; color: var(--green); margin: .1rem 0; }
-  .mock-card-delta { font-size: 9px; font-weight: 700; color: #16a34a; }
-  .mock-kanban { display: grid; grid-template-columns: repeat(3,1fr); gap: .35rem; }
-  .mock-col-title { font-size: 8px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; color: var(--green-80); margin-bottom: .25rem; }
-  .mock-task { background: var(--white); border: 1px solid var(--green-10); border-radius: 7px; padding: .35rem .4rem; font-size: 9px; color: var(--green); font-weight: 600; margin-bottom: .2rem; }
-  .mock-tag { display: inline-block; padding: 1px 5px; border-radius: 4px; font-size: 8px; font-weight: 700; margin-top: .1rem; }
-  .mock-tag.crm { background: rgba(0,86,45,.12); color: var(--green); }
-  .mock-tag.doc { background: #fef9c3; color: #854d0e; }
-  .mock-tag.bil { background: #dcfce7; color: #166534; }
+  .book { position:relative; background:var(--paper); border:1px solid var(--edge); border-radius:4px; cursor:pointer; flex-shrink:0;
+          box-shadow:0 1px 2px rgba(0,0,0,.05), 0 10px 28px -12px rgba(0,0,0,.18); -webkit-tap-highlight-color:transparent; }
+  .book.two::after { content:""; position:absolute; top:0; bottom:0; left:calc(50% - 26px); width:52px; pointer-events:none;
+          background:linear-gradient(to right, transparent, rgba(0,0,0,.07) 50%, transparent); }
+  body[data-t="dark"] .book.two::after { background:linear-gradient(to right, transparent, rgba(0,0,0,.35) 50%, transparent); }
+  .clip { overflow:hidden; }
+  .flow { column-fill:auto; line-height:1.55; text-align:justify; hyphens:auto; -webkit-hyphens:auto; text-wrap:pretty; transition:transform .28s cubic-bezier(.3,.7,.2,1); }
+  @media (prefers-reduced-motion:reduce) { .flow { transition:none; } }
 
-  /* floating chips */
-  .hero-chip {
-    position: absolute; background: var(--white);
-    border-radius: 12px; padding: .5rem .75rem;
-    box-shadow: 0 8px 32px rgba(0,86,45,.12); font-size: 11px;
-    font-weight: 700; color: var(--green);
-    display: flex; align-items: center; gap: .4rem;
-    animation: float 4s ease-in-out infinite;
-    border: 1px solid var(--green-10); z-index: 2;
-  }
-  .hero-chip.chip1 { top: -20px; right: 20px; animation-delay: 0s; }
-  .hero-chip.chip2 { bottom: 20px; left: -30px; animation-delay: 1.5s; }
-  .chip-dot { width: 8px; height: 8px; border-radius: 50%; }
-  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  .flow h1 { font-size:1.55em; line-height:1.25; font-weight:normal; text-align:center; hyphens:manual; margin:0 0 1.1em; padding-top:3em; break-before:column; }
+  .flow h1:first-child { break-before:auto; }
+  .flow h1::after { content:""; display:block; width:2.2em; height:1px; background:var(--muted); margin:.9em auto 0; }
+  .flow h2 { font-size:1.2em; font-weight:normal; text-align:center; margin:1.6em 0 .7em; break-after:avoid; }
+  .flow h3 { font-size:1em; font-style:italic; font-weight:normal; margin:1.3em 0 .4em; break-after:avoid; }
+  .flow p { margin:0; text-indent:1.25em; orphans:2; widows:2; }
+  .flow h1 + p, .flow h2 + p, .flow h3 + p, .flow hr + p, .flow blockquote + p { text-indent:0; }
+  .flow blockquote { margin:.9em 0; padding-left:1em; border-left:2px solid var(--line); font-style:italic; break-inside:avoid; }
+  .flow ul, .flow ol { margin:.8em 0; padding-left:1.3em; }
+  .flow hr { border:0; text-align:center; margin:1.1em 0; }
+  .flow hr::after { content:"\2726"; color:var(--muted); font-size:.85em; }
+  .flow code { font-family:ui-monospace,Menlo,monospace; font-size:.88em; background:var(--line); padding:0 .25em; border-radius:3px; }
 
-  /* ── SECTION COMMONS ── */
-  section { padding: 6rem 2rem; }
-  .container { max-width: 1200px; margin: 0 auto; }
-  .section-eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; color: var(--green); margin-bottom: 1rem; }
-  .section-eyebrow::before { content:''; width: 20px; height: 2px; background: var(--green); border-radius: 2px; }
-  .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; letter-spacing: -1.5px; text-transform: uppercase; line-height: .95; color: var(--green); margin-bottom: 1rem; }
-  .section-sub { font-size: 17px; color: var(--green-80); line-height: 1.7; max-width: 540px; font-weight: 500; }
+  .foot { width:100%; max-width:560px; padding:6px 20px calc(10px + env(safe-area-inset-bottom)); text-align:center; font:12.5px system-ui,sans-serif; color:var(--muted); }
+  #seek { width:100%; margin:6px 0 0; height:18px; accent-color:var(--ink); cursor:pointer; background:transparent; }
 
-  /* ── SERVICES SECTION ── */
-  .services { background: var(--white); }
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
-  .service-card {
-    background: var(--beige); border: 1px solid var(--green-10);
-    border-radius: var(--r-xl); padding: 2.25rem; transition: all .25s ease;
-  }
-  .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,86,45,.1); border-color: var(--green-40); }
-  .service-icon {
-    width: 48px; height: 48px; border-radius: 14px;
-    background: var(--green); color: var(--beige);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px; margin-bottom: 1.25rem;
-  }
-  .service-icon svg { width: 24px; height: 24px; stroke-width: 2px; }
-  .service-card h3 { font-size: 18px; font-weight: 800; color: var(--green); margin-bottom: .6rem; }
-  .service-card p { font-size: 14px; color: var(--green-80); line-height: 1.7; margin-bottom: 1.25rem; }
-  .service-list { list-style: none; }
-  .service-list li { font-size: 13px; color: var(--green); padding: .35rem 0; border-bottom: 1px solid var(--green-10); padding-left: 1.25rem; position: relative; font-weight: 500; }
-  .service-list li:last-child { border-bottom: none; }
-  .service-list li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 900; }
-
-  /* ── CABINET BENEFIT SECTION ── */
-  .cabinet-section { background: var(--green); color: var(--beige); }
-  .cabinet-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  .cabinet-text h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; text-transform: uppercase; letter-spacing: -1.5px; line-height: .95; color: #ffffff; margin-bottom: 1rem; }
-  .cabinet-text p { font-size: 16px; color: rgba(245,245,220,.92); line-height: 1.75; margin-bottom: 2rem; }
-  .cabinet-features { display: flex; flex-direction: column; gap: 1rem; }
-  .cab-feat-item { display: flex; gap: 1rem; align-items: start; background: rgba(245,245,220,.10); border: 1px solid rgba(245,245,220,.18); padding: 1.25rem; border-radius: var(--r-lg); }
-  .cab-feat-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(245,245,220,.20); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #ffffff; }
-  .cab-feat-icon svg { width: 18px; height: 18px; }
-  .cab-feat-info h4 { font-size: 15px; font-weight: 800; color: #ffffff; margin-bottom: .2rem; }
-  .cab-feat-info p { font-size: 13px; color: rgba(245,245,220,.85); line-height: 1.6; margin: 0; }
-
-  /* ── PRICING ── */
-  .pricing { background: var(--white); }
-  .pricing-inner { text-align: center; margin-bottom: 3.5rem; }
-  .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; max-width: 960px; margin: 0 auto; }
-  .plan { background: var(--beige); border: 1px solid var(--green-10); border-radius: var(--r-xl); padding: 2rem; position: relative; }
-  .plan.featured { background: var(--green); color: var(--beige); border-color: var(--green); transform: scale(1.03); box-shadow: 0 24px 64px rgba(0,86,45,.25); }
-  .plan-badge { display: inline-block; background: var(--beige); color: var(--green); font-size: 10px; font-weight: 800; padding: .2rem .65rem; border-radius: 999px; margin-bottom: .75rem; text-transform: uppercase; letter-spacing: .08em; }
-  .plan-name { font-size: 20px; font-weight: 900; text-transform: uppercase; letter-spacing: -.5px; margin-bottom: .25rem; }
-  .plan-desc { font-size: 13px; opacity: .7; margin-bottom: 1.5rem; font-weight: 500; }
-  .plan-price { font-size: 2.25rem; font-weight: 900; letter-spacing: -2px; margin-bottom: .25rem; }
-  .plan-price small { font-size: 14px; font-weight: 500; opacity: .6; letter-spacing: 0; }
-  .plan hr { border: none; border-top: 1px solid; opacity: .12; margin: 1.25rem 0; }
-  .plan ul { list-style: none; margin-bottom: 1.75rem; }
-  .plan li { font-size: 13px; padding: .4rem 0; border-bottom: 1px solid; border-color: var(--green-10); padding-left: 1.4rem; position: relative; font-weight: 500; }
-  .plan.featured li { border-color: rgba(245,245,220,.12); }
-  .plan li:last-child { border-bottom: none; }
-  .plan li::before { content: '✓'; position: absolute; left: 0; font-weight: 900; color: var(--green); }
-  .plan.featured li::before { color: var(--beige); }
-
-  /* ── HOW IT WORKS ── */
-  .how { background: var(--beige); }
-  .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; margin-top: 3rem; }
-  .step { background: var(--white); border: 1px solid var(--green-10); border-radius: var(--r-xl); padding: 1.75rem; position: relative; }
-  .step-num {
-    width: 44px; height: 44px; border-radius: 12px;
-    background: var(--green); color: var(--beige);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px; font-weight: 900; margin-bottom: 1.25rem;
-  }
-  .step h4 { font-size: 16px; font-weight: 800; text-transform: uppercase; margin-bottom: .5rem; color: var(--green); }
-  .step p { font-size: 13px; color: var(--green-80); line-height: 1.65; }
-
-  /* ── CONTACT ── */
-  .contact { background: var(--white); }
-  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-  .contact-info h2 { font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 900; text-transform: uppercase; letter-spacing: -1.5px; line-height: .95; margin-bottom: 1rem; }
-  .contact-info p { font-size: 16px; color: var(--green-80); margin-bottom: 2rem; line-height: 1.7; font-weight: 500; }
-  .contact-meta { display: flex; flex-direction: column; gap: 1rem; }
-  .contact-meta-item { display: flex; align-items: center; gap: .75rem; font-size: 14px; font-weight: 600; }
-  .contact-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--green-10); border: 1px solid var(--green-10); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
-  .contact-icon svg { width: 18px; height: 18px; color: var(--green); stroke-width: 2px; }
-  .contact-form-wrap { background: var(--beige); border: 1px solid var(--green-10); border-radius: var(--r-2xl); padding: 2rem; }
-  .form-group { margin-bottom: 1rem; }
-  .form-group label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--green-80); margin-bottom: .4rem; }
-  .form-group input, .form-group textarea, .form-group select {
-    width: 100%; padding: .75rem 1rem;
-    border: 1.5px solid var(--green-10); border-radius: var(--r);
-    font-size: 14px; font-family: var(--font); color: var(--green);
-    background: var(--white); outline: none; transition: border-color .15s; font-weight: 500;
-  }
-  .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-    border-color: var(--green); box-shadow: 0 0 0 3px var(--green-10);
-  }
-  .form-submit { width: 100%; padding: .875rem; background: var(--green); color: var(--beige); border: none; border-radius: 999px; font-size: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; cursor: pointer; transition: all .2s; margin-top: .25rem; }
-  .form-submit:hover { background: #003d20; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,86,45,.25); }
-  .form-success { display: none; background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; border-radius: var(--r); padding: 1rem; font-size: 14px; font-weight: 700; text-align: center; margin-top: 1rem; }
-
-  /* Sticky Mobile Bar */
-  .sticky-mobile-cta {
-    position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
-    padding: .75rem 1rem; background: rgba(245,245,220,.95);
-    backdrop-filter: blur(12px); border-top: 1px solid var(--green-10);
-    display: none; box-shadow: 0 -4px 20px rgba(0,86,45,.1);
-  }
-  .sticky-mobile-cta .btn { width: 100%; justify-content: center; font-size: 15px; padding: .75rem; }
-
-  /* ── CTA BANNER ── */
-  .cta-banner { background: var(--green); padding: 6rem 2rem; text-align: center; position: relative; overflow: hidden; }
-  .cta-banner::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(245,245,220,.06) 0%, transparent 70%); }
-  .cta-banner h2 { font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 900; text-transform: uppercase; letter-spacing: -1.5px; color: #ffffff; margin-bottom: .75rem; position: relative; }
-  .cta-banner p { font-size: 16px; color: rgba(245,245,220,.85); max-width: 480px; margin: 0 auto 2.5rem; font-weight: 500; position: relative; }
-  .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--green); padding: 4rem 2rem 2rem;
-    margin-top: -2px;
-  }
-  .footer-inner { max-width: 1200px; margin: 0 auto; }
-  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(245,245,220,.15); }
-  .footer-logo { font-size: 20px; font-weight: 900; color: #ffffff; letter-spacing: -1px; text-transform: uppercase; margin-bottom: .5rem; }
-  .footer-brand p { font-size: 13px; color: rgba(245,245,220,.75); line-height: 1.65; max-width: 240px; }
-  .footer-col h4 { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: rgba(245,245,220,.65); margin-bottom: .85rem; }
-  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .45rem; }
-  .footer-col a { font-size: 14px; color: rgba(245,245,220,.82); text-decoration: none; font-weight: 500; transition: color .15s; }
-  .footer-col a:hover { color: #ffffff; }
-  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; }
-  .footer-bottom p { font-size: 12px; color: rgba(245,245,220,.55); }
-
-  /* ── RESPONSIVE ── */
-  @media (hover: none), (max-width: 900px) {
-    .mockup-card { transform: none !important; transition: none !important; }
-    .mockup-card:hover { transform: none !important; }
-  }
-  @media (max-width: 900px) {
-    .hero-inner, .cabinet-inner, .contact-inner, .steps { grid-template-columns: 1fr; gap: 2.5rem; }
-    .hero-visual { display: block; margin-top: 1rem; }
-    .pricing-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
-    .plan.featured { transform: none; }
-    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
-  }
-  @media (max-width: 640px) {
-    nav { padding: 0 1rem; }
-    .nav-inner { height: 60px; }
-    .nav-links, .nav-cta .btn-ghost { display: none; }
-    .nav-cta .btn-solid { font-size: 12px; padding: .45rem .85rem; }
-    section { padding: 3.5rem 1.25rem; }
-    .hero { padding: 5.5rem 1.25rem 3rem; min-height: auto; }
-    .hero-badge { font-size: 11px; padding: .3rem .75rem; }
-    .hero h1 { font-size: 2rem; letter-spacing: -1px; line-height: 1.1; }
-    .hero-sub { font-size: 15px; margin-bottom: 1.5rem; }
-    .hero-actions { flex-direction: column; width: 100%; }
-    .hero-actions .btn { width: 100%; justify-content: center; }
-    .hero-stats { grid-template-columns: 1fr 1fr; display: grid; gap: 1rem; margin-top: 1.5rem; padding-top: 1.25rem; }
-    .hero-stat strong { font-size: 20px; }
-    .hero-stat span { font-size: 12px; }
-    .services-grid { grid-template-columns: 1fr; gap: 1rem; }
-    .service-card { padding: 1.5rem; }
-    .mock-body { grid-template-columns: 1fr; }
-    .mock-sidebar { display: none; }
-    .hero-chip.chip1, .hero-chip.chip2 { display: none; }
-    .footer-top { grid-template-columns: 1fr; gap: 1.75rem; }
-    .footer-bottom { flex-direction: column; gap: .5rem; text-align: center; }
-    .form-group input, .form-group textarea, .form-group select { font-size: 16px; }
-    .contact-form-wrap { padding: 1.5rem 1.25rem; }
-    .plan { padding: 1.5rem; }
-    .sticky-mobile-cta { display: block; }
-    body { padding-bottom: 70px; }
-  }
+  body.drag .book { outline:2px dashed var(--muted); outline-offset:8px; }
+  input[type=file] { display:none; }
+  button:focus-visible, #seek:focus-visible { outline:2px solid var(--muted); outline-offset:2px; }
+  @media (max-width:699px) { .arrow { display:none; } .stage { gap:0; } }
 </style>
 </head>
-<body>
+<body data-t="light">
 
-<!-- NAV -->
-<nav id="nav">
-  <div class="nav-inner">
-    <a href="#" class="logo">
-      <div class="logo-mark">Z</div>
-      <div class="logo-text">
-        <strong>Zhan</strong>
-        <span>Finance</span>
-      </div>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#services">Услуги</a></li>
-      <li><a href="#cabinet">Личный кабинет</a></li>
-      <li><a href="#pricing">Тарифы</a></li>
-      <li><a href="#how">Как работаем</a></li>
-      <li><a href="#contact">Контакты</a></li>
-    </ul>
-    <div class="nav-cta">
-      <a href="#contact" class="btn btn-ghost"><i data-lucide="phone"></i> Консультация</a>
-      <a href="#contact" class="btn btn-solid"><i data-lucide="sparkles"></i> Рассчитать стоимость</a>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-blob"></div>
-  <div class="hero-blob2"></div>
-  <div class="hero-inner">
-    <div>
-      <div class="hero-badge"><span></span> Бухгалтерский аутсорсинг под ключ · Алматы / Казахстан</div>
-      <h1>Профессиональная<br>бухгалтерия<br>для вашего бизнеса</h1>
-      <p class="hero-sub">Передайте отчёты, АВР, ЭСФ и зарплату экспертам ZhanFinance. Вы получаете 100% порядок, финансовую гарантию от штрафов и прозрачный личный кабинет 24/7.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn btn-solid btn-lg"><i data-lucide="arrow-right"></i> Получить консультацию</a>
-        <a href="#pricing" class="btn btn-ghost btn-lg"><i data-lucide="calculator"></i> Посмотреть тарифы</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><strong>100%</strong><span>гарантия защиты от штрафов</span></div>
-        <div class="hero-stat"><strong>в 1 клик</strong><span>доступ ко всем АВР и актам</span></div>
-        <div class="hero-stat"><strong>24/7</strong><span>контроль в личном кабинете</span></div>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="hero-chip chip1">
-        <div class="chip-dot" style="background:#16a34a"></div>
-        Отчётность за III квартал сдана без ошибок
-      </div>
-      <div class="mockup-card">
-        <div class="mock-bar">
-          <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
-          <div class="mock-url">app.zhanfinance.kz/client-portal</div>
-        </div>
-        <div class="mock-body">
-          <div class="mock-sidebar">
-            <div class="mock-logo">ZhanFinance</div>
-            <div class="mock-nav-item active"><i data-lucide="layout-dashboard"></i> Мой кабинет</div>
-            <div class="mock-nav-item"><i data-lucide="file-text"></i> Мои АВР и Акты</div>
-            <div class="mock-nav-item"><i data-lucide="credit-card"></i> Счета и Инвойсы</div>
-            <div class="mock-nav-item"><i data-lucide="message-square"></i> Чат с бухгалтером</div>
-          </div>
-          <div class="mock-main">
-            <div class="mock-header">Кабинет клиента · ТОО «АлмаТрейд»</div>
-            <div class="mock-cards">
-              <div class="mock-card">
-                <div class="mock-card-label">Статус отчётов</div>
-                <div class="mock-card-val">Сдано</div>
-                <div class="mock-card-delta up">ФНО 910.00 принята</div>
-              </div>
-              <div class="mock-card">
-                <div class="mock-card-label">Готовые АВР</div>
-                <div class="mock-card-val">12</div>
-                <div class="mock-card-delta up">Скачать PDF</div>
-              </div>
-              <div class="mock-card">
-                <div class="mock-card-label">Штрафы и пени</div>
-                <div class="mock-card-val">0 ₸</div>
-                <div class="mock-card-delta up">100% Порядок</div>
-              </div>
-            </div>
-            <div class="mock-kanban">
-              <div>
-                <div class="mock-col-title">Запросы</div>
-                <div class="mock-task">Выписка ЭСФ #402 <div class="mock-tag crm">В процессе</div></div>
-              </div>
-              <div>
-                <div class="mock-col-title">Подготовлено</div>
-                <div class="mock-task">Акт сверки за Август <div class="mock-tag doc">Готово</div></div>
-              </div>
-              <div>
-                <div class="mock-col-title">Подписано</div>
-                <div class="mock-task">Договор аутсорсинга <div class="mock-tag bil">Архив</div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hero-chip chip2">
-        <div class="chip-dot" style="background:#ca8a04"></div>
-        ФНО 300.00 НДС · Принято НУ
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="services" id="services">
-  <div class="container">
-    <div class="section-eyebrow">Комплексные услуги</div>
-    <h2 class="section-title">Всё для вашей бухгалтерии<br>в одном месте</h2>
-    <p class="section-sub">Вам больше не нужно держать штатного бухгалтера или переживать за ушедшие кадры.</p>
-
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon"><i data-lucide="calculator"></i></div>
-        <h3>Ведение бухгалтерского и налогового учёта</h3>
-        <p>Полное сопровождение ТОО и ИП на любом режиме (упрощёнка, розничный налог, общеустановленный с НДС).</p>
-        <ul class="service-list">
-          <li>Составление и сдача ФНО (910, 300, 700, 100)</li>
-          <li>Учёт доходов, расходов и первичных документов</li>
-          <li>Своевременная распечатка и подписание реестров</li>
-        </ul>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon"><i data-lucide="file-check-2"></i></div>
-        <h3>Выписка ЭСФ, АВР и СНТ</h3>
-        <p>Оперативная подготовка документов для ваших покупателей без задержек и ошибок в реквизитах.</p>
-        <ul class="service-list">
-          <li>Выписка ЭСФ в ИС ЭСФ в день запроса</li>
-          <li>Генерация АВР и актов выполненных работ</li>
-          <li>Оформление СНТ и накладных на отпуск товаров</li>
-        </ul>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon"><i data-lucide="users"></i></div>
-        <h3>Расчёт зарплаты и кадровый учёт</h3>
-        <p>Расчёт налогов с ФОТ (ИПН, ОПВ, СО, ОСМС) и полное кадровое делопроизводство.</p>
-        <ul class="service-list">
-          <li>Приём, увольнение и кадровые приказы</li>
-          <li>Расчёт отпускных, больничных и компенсаций</li>
-          <li>Регистрация трудовых договоров на enbek.kz</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CABINET ADVANTAGE -->
-<section class="cabinet-section" id="cabinet">
-  <div class="container">
-    <div class="cabinet-inner">
-      <div class="cabinet-text">
-        <div class="section-eyebrow" style="color:var(--beige)">Уникальный клиентский сервис</div>
-        <h2>Ваш прозрачный онлайн-кабинет 24/7</h2>
-        <p>В отличие от обычных бухгалтеров на удалёнке, с ZhanFinance вы не гадаете, сдан ли отчёт и где находится АВР. Вы в любой момент заходите в свой личный кабинет с любого устройства.</p>
-        
-        <div class="cabinet-features">
-          <div class="cab-feat-item">
-            <div class="cab-feat-icon"><i data-lucide="eye"></i></div>
-            <div class="cab-feat-info">
-              <h4>100% прозрачность задач</h4>
-              <p>Видите статус каждого вашего запроса и календарь налоговых платежей в реальном времени.</p>
-            </div>
-          </div>
-
-          <div class="cab-feat-item">
-            <div class="cab-feat-icon"><i data-lucide="folder-down"></i></div>
-            <div class="cab-feat-info">
-              <h4>Все документы в одном клике</h4>
-              <p>Скачивайте готовые АВР, акты и счета в PDF 24/7 без лишних звонков и писем.</p>
-            </div>
-          </div>
-
-          <div class="cab-feat-item">
-            <div class="cab-feat-icon"><i data-lucide="message-square"></i></div>
-            <div class="cab-feat-info">
-              <h4>Прямой чат с персональным бухгалтером</h4>
-              <p>Никаких потерянных переписок в Telegram или личных мессенджерах. История хранится в защищённом профиле.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-visual">
-        <div class="mockup-card">
-          <div class="mock-bar">
-            <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
-            <div class="mock-url">app.zhanfinance.kz/portal</div>
-          </div>
-          <div class="mock-body" style="grid-template-columns: 1fr; padding: 1.5rem; background: var(--white);">
-            <div style="font-size: 15px; font-weight: 800; color: var(--green); margin-bottom: 1rem;">Единый центр управления вашей бухгалтерией</div>
-            <div style="font-size: 13px; color: var(--green-80); line-height: 1.7; margin-bottom: 1.5rem;">
-              Вам больше не нужно звонить и спрашивать: <em>«А вы выписали акт?»</em> или <em>«Сдана ли декларация?»</em>. Всё автоматически отображается в вашем личном кабинете.
-            </div>
-            <div style="background: var(--beige); padding: 1rem; border-radius: var(--r-lg); border: 1px solid var(--green-10);">
-              <div style="font-size: 12px; font-weight: 800; color: var(--green);">Финансовая ответственность:</div>
-              <div style="font-size: 12px; color: var(--green-80); margin-top: .25rem;">Мы несём 100% материальную ответственность по договору за правильность и своевременность учёта.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section class="pricing" id="pricing">
-  <div class="container">
-    <div class="pricing-inner">
-      <div class="section-eyebrow" style="justify-content:center">Тарифы на обслуживание</div>
-      <h2 class="section-title">Прозрачная стоимость<br>без скрытых платежей</h2>
-      <p class="section-sub" style="margin: .75rem auto 0; text-align:center">Выберите тариф под форму собственности вашего бизнеса.</p>
-    </div>
-
-    <div class="pricing-grid">
-      <!-- ИП -->
-      <div class="plan">
-        <div class="plan-name">ИП</div>
-        <div class="plan-desc">Упрощёнка / Розничный налог</div>
-        <div class="plan-price">₸ 25,000 <small>/ месяц</small></div>
-        <hr>
-        <ul>
-          <li>Сдача ФНО 910.00 / 915.00</li>
-          <li>Выписка до 20 ЭСФ и АВР в месяц</li>
-          <li>Кадровый учёт до 3 сотрудников</li>
-          <li>Доступ к Личному Кабинету 24/7</li>
-          <li>Консультации бухгалтера</li>
-        </ul>
-        <a href="#contact" class="btn btn-ghost" style="width:100%;justify-content:center">Выбрать тариф</a>
-      </div>
-
-      <!-- ТОО УПРОЩЁНКА -->
-      <div class="plan featured">
-        <div class="plan-badge">Популярный</div>
-        <div class="plan-name">ТОО Упрощёнка</div>
-        <div class="plan-desc">Оптимально для малого бизнеса без НДС</div>
-        <div class="plan-price">₸ 45,000 <small>/ месяц</small></div>
-        <hr style="border-color:rgba(245,245,220,.2)">
-        <ul>
-          <li>Всё из тарифа «ИП»</li>
-          <li>Полный налоговый и бухучёт ТОО</li>
-          <li>Кадровый учёт до 10 сотрудников</li>
-          <li>Выписка ЭСФ, СНТ и АВР</li>
-          <li>Персональный бухгалтер</li>
-          <li>Личный кабинет клиента 24/7</li>
-        </ul>
-        <a href="#contact" class="btn btn-beige" style="width:100%;justify-content:center">Подключить ТОО</a>
-      </div>
-
-      <!-- ТОО С НДС -->
-      <div class="plan">
-        <div class="plan-name">ТОО с НДС</div>
-        <div class="plan-desc">Общеустановленный режим / Торговля / Производство</div>
-        <div class="plan-price">₸ 85,000 <small>/ месяц</small></div>
-        <hr>
-        <ul>
-          <li>Ведение учёта НДС (ФНО 300.00) и КПН (ФНО 100.00)</li>
-          <li>Импорт/Экспорт, ЕАЭС, ТС</li>
-          <li>Неограниченные ЭСФ и СНТ</li>
-          <li>Экспресс-аудит при входе</li>
-          <li>Приоритетная поддержка 24/7</li>
-        </ul>
-        <a href="#contact" class="btn btn-ghost" style="width:100%;justify-content:center">Получить расчёт</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="how" id="how">
-  <div class="container">
-    <div class="section-eyebrow">Простой старт</div>
-    <h2 class="section-title">Как мы начинаем работу</h2>
-    <p class="section-sub">Начните сотрудничество за 4 простых шага без отрыва от вашего бизнеса.</p>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h4>Заявка</h4>
-        <p>Оставляете форму — наш старший бухгалтер связывается с вами за 15 минут.</p>
-      </div>
-
-      <div class="step">
-        <div class="step-num">2</div>
-        <h4>Экспресс-аудит</h4>
-        <p>Бесплатно проверяем текущее состояние базы, сдачу ФНО и наличие хвостов.</p>
-      </div>
-
-      <div class="step">
-        <div class="step-num">3</div>
-        <h4>Договор и Кабинет</h4>
-        <p>Подписываем договор с финансовой гарантией и создаём ваш личный кабинет.</p>
-      </div>
-
-      <div class="step">
-        <div class="step-num">4</div>
-        <h4>Спокойный учёт</h4>
-        <p>Вы занимаетесь развитием бизнеса, а мы полностью ведём вашу бухгалтерию.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="container contact-inner">
-    <div class="contact-info">
-      <div class="section-eyebrow">Оставить заявку</div>
-      <h2>Получите бесплатный<br>экспресс-аудит</h2>
-      <p>Оставьте контакты — проконсультируем по налогообложению вашего бизнеса и бесплатно проверим текущее состояние вашей бухгалтерии.</p>
-      
-      <div class="contact-meta">
-        <div class="contact-meta-item"><div class="contact-icon"><i data-lucide="map-pin"></i></div>Казахстан, Алматы / Астана</div>
-        <div class="contact-meta-item"><div class="contact-icon"><i data-lucide="clock"></i></div>Ответ специалиста в течение 15 минут</div>
-        <div class="contact-meta-item"><div class="contact-icon"><i data-lucide="shield-check"></i></div>100% Материальная ответственность по договору</div>
-      </div>
-    </div>
-
-    <div class="contact-form-wrap">
-      <div class="form-group">
-        <label>Ваше имя</label>
-        <input type="text" id="f-name" placeholder="Айдос Сарсенов">
-      </div>
-      <div class="form-group">
-        <label>Название компании или ИП</label>
-        <input type="text" id="f-company" placeholder="ТОО «АлмаТрейд» / ИП Сарсенов">
-      </div>
-      <div class="form-group">
-        <label>Телефон / WhatsApp</label>
-        <input type="tel" id="f-phone" placeholder="+7 (777) 000-00-00">
-      </div>
-      <div class="form-group">
-        <label>Режим налогообложения</label>
-        <select id="f-tax">
-          <option value="ИП Упрощёнка">ИП на упрощёнке</option>
-          <option value="ТОО Упрощёнка" selected>ТОО на упрощёнке</option>
-          <option value="ТОО НДС">ТОО с НДС (Общеустановленный)</option>
-          <option value="Нужна консультация">Нужна консультация по выбору режима</option>
-        </select>
-      </div>
-      <button class="form-submit" onclick="submitForm()"><i data-lucide="sparkles" style="width:16px;height:16px;display:inline-block;vertical-align:-2px"></i> Рассчитать стоимость и получить аудит</button>
-      <div class="form-success" id="form-success">Заявка принята! Главный бухгалтер свяжется с вами в течение 15 минут.</div>
-    </div>
-  </div>
-</section>
-
-<!-- Sticky Mobile Bar -->
-<div class="sticky-mobile-cta">
-  <a href="#contact" class="btn btn-solid">
-    <i data-lucide="sparkles"></i> Рассчитать стоимость бухгалтерии
-  </a>
-</div>
-
-<!-- CTA BANNER -->
-<div class="cta-banner">
-  <h2>Забудьте о штрафах и рутине<br>раз и навсегда</h2>
-  <p>Доверьте бухгалтерию профессионалам с личным онлайн-кабинетом и 100% материальной гарантией.</p>
-  <div class="cta-actions">
-    <a href="#contact" class="btn btn-beige btn-lg"><i data-lucide="arrow-right"></i> Рассчитать стоимость</a>
+<div class="top" id="top">
+  <span id="name"></span>
+  <div class="tools">
+    <button id="fm" type="button" aria-label="Уменьшить шрифт">A&minus;</button>
+    <button id="fp" type="button" aria-label="Увеличить шрифт">A+</button>
+    <button id="th" type="button" aria-label="Сменить тему">Тема</button>
+    <button id="open" type="button">Открыть .md</button>
+    <input id="file" type="file" accept=".md,.markdown,.txt,text/markdown,text/plain">
   </div>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="footer-logo">ZhanFinance</div>
-        <p>Профессиональная бухгалтерская компания в Казахстане. Бухгалтерский и налоговый аутсорсинг для ТОО и ИП.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Навигация</h4>
-        <ul>
-          <li><a href="#services">Услуги</a></li>
-          <li><a href="#cabinet">Личный кабинет</a></li>
-          <li><a href="#pricing">Тарифы</a></li>
-          <li><a href="#how">Как работаем</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Услуги</h4>
-        <ul>
-          <li><a href="#services">Учёт ТОО и ИП</a></li>
-          <li><a href="#services">Выписка ЭСФ и АВР</a></li>
-          <li><a href="#services">Кадровый учёт</a></li>
-          <li><a href="#services">Сдача ФНО</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Контакты</h4>
-        <ul>
-          <li><a href="#contact">Заявка на аудит</a></li>
-          <li><a href="#contact">Консультация</a></li>
-          <li><a href="#contact">Алматы / Астана</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 ZhanFinance. Все права защищены. Казахстан.</p>
-      <p>Бухгалтерский аутсорсинг под ключ</p>
-    </div>
-  </div>
-</footer>
+<div class="stage" id="stage">
+  <button class="arrow" id="prev" type="button" aria-label="Назад">&larr;</button>
+  <div class="book" id="book"><div class="clip" id="clip"><div class="flow" id="flow"></div></div></div>
+  <button class="arrow" id="next" type="button" aria-label="Вперёд">&rarr;</button>
+</div>
+
+<div class="foot" id="foot"><span id="pos"></span><input id="seek" type="range" min="0" max="0" value="0" aria-label="Перейти к странице"></div>
+
+<!-- Текст книги: замени markdown между тегами на свой. Либо открой файл кнопкой сверху. -->
+<script type="text/markdown" id="source">
+# Название книги
+
+Здесь будет текст твоей книги. Нажми «Открыть .md» вверху или перетащи файл на страницу, и книга заменится.
+
+Листать можно стрелками на клавиатуре, кнопками по бокам, кликом по правой или левой части книги, а на телефоне свайпом. Внизу есть ползунок для быстрого перехода.
+
+## Как вставить книгу прямо в файл
+
+Открой этот HTML в текстовом редакторе, найди блок с текстом и замени содержимое на свой markdown. Тогда книга будет открываться сразу.
+
+# Вторая глава
+
+Каждый заголовок первого уровня начинает новую страницу. Заголовки второго и третьего уровня идут внутри страницы.
+
+> Цитата выглядит так.
+
+Можно писать **жирным**, *курсивом* и `кодом`.
+
+---
+
+- список
+- из нескольких
+- пунктов
+</script>
 
 <script>
-  // Initialize Lucide SVG Icons
-  lucide.createIcons();
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var flow = $('flow'), clip = $('clip'), book = $('book'), seek = $('seek');
+  var page = 0, pages = 1, cols = 1, step = 0, pos = 0, key = 'book', raw = $('source').textContent.trim();
+  var fs = 1, themes = ['light', 'sepia', 'dark'], ti = 0, RATIO = 148 / 210; // A5
 
-  // Nav scroll
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 30);
-  });
+  function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function fetchv(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  fs = parseFloat(fetchv('book-fs')) || 1;
+  ti = Math.max(0, themes.indexOf(fetchv('book-theme')));
+  document.body.dataset.t = themes[ti];
 
-  // Form submit
-  function submitForm() {
-    const name = document.getElementById('f-name').value.trim();
-    const phone = document.getElementById('f-phone').value.trim();
-    if (!name || !phone) { alert('Заполните имя и телефон.'); return; }
-    
-    document.getElementById('form-success').style.display = 'block';
-    document.querySelector('.form-submit').disabled = true;
-    document.querySelector('.form-submit').textContent = 'Отправлено';
+  // ---------- markdown -> html ----------
+  function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function inline(s) {
+    return esc(s)
+      .replace(/`([^`]+)`/g, '<code>$1</code>')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/(^|[^*\w])\*([^*\n]+)\*/g, '$1<em>$2</em>')
+      .replace(/(^|[^\w])_([^_\n]+)_/g, '$1<em>$2</em>');
+  }
+  function md(src) {
+    var out = [], para = [], list = null, quote = [];
+    function flushP() { if (para.length) { out.push('<p>' + inline(para.join(' ')) + '</p>'); para = []; } }
+    function flushL() { if (list) { out.push('<' + list.t + '>' + list.i.join('') + '</' + list.t + '>'); list = null; } }
+    function flushQ() { if (quote.length) { out.push('<blockquote>' + inline(quote.join(' ')) + '</blockquote>'); quote = []; } }
+    function flush() { flushP(); flushL(); flushQ(); }
+    src.replace(/\r\n?/g, '\n').split('\n').forEach(function (line) {
+      var m;
+      if (!line.trim()) { flush(); return; }
+      if ((m = line.match(/^(#{1,3})\s+(.*)$/))) { flush(); out.push('<h' + m[1].length + '>' + inline(m[2]) + '</h' + m[1].length + '>'); return; }
+      if (/^\s*([-*_])\1{2,}\s*$/.test(line)) { flush(); out.push('<hr>'); return; }
+      if ((m = line.match(/^>\s?(.*)$/))) { flushP(); flushL(); quote.push(m[1]); return; }
+      if ((m = line.match(/^\s*([-*+]|\d+\.)\s+(.*)$/))) {
+        flushP(); flushQ();
+        var t = /\d/.test(m[1]) ? 'ol' : 'ul';
+        if (!list || list.t !== t) { flushL(); list = { t: t, i: [] }; }
+        list.i.push('<li>' + inline(m[2]) + '</li>'); return;
+      }
+      flushL(); flushQ(); para.push(line.trim());
+    });
+    flush();
+    return out.join('\n');
   }
 
-  // Scroll-reveal (lightweight & fast)
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
-    });
-  }, { threshold: 0.05 });
+  // ---------- вёрстка: страницы пропорций А5 ----------
+  function layout() {
+    var w = window.innerWidth, h = window.innerHeight;
+    var avail = h - $('top').offsetHeight - $('foot').offsetHeight - 14;
+    var side = w >= 700 ? 130 : 16;
+    cols = (w >= 960 && w / h > 1.25) ? 2 : 1;
+    var maxW = (w - side) / cols, byH = avail * RATIO, pageW, pageH;
+    if (maxW < byH) { pageW = maxW; pageH = cols === 1 ? avail : maxW / RATIO; }
+    else { pageW = byH; pageH = avail; }
+    pageW = Math.floor(pageW); pageH = Math.floor(pageH);
+    var m = Math.round(Math.max(22, Math.min(60, pageW * 0.1)));
+    var colW = pageW - 2 * m, gap = 2 * m, H = pageH - 2 * m;
+    var W = cols * colW + (cols - 1) * gap;
+    book.style.padding = m + 'px';
+    book.classList.toggle('two', cols === 2);
+    clip.style.width = flow.style.width = W + 'px';
+    clip.style.height = flow.style.height = H + 'px';
+    flow.style.columnWidth = colW + 'px'; flow.style.columnGap = gap + 'px';
+    flow.style.fontSize = (Math.max(14.5, Math.min(17.5, pageW * 0.03)) * fs).toFixed(2) + 'px';
+    step = cols * (colW + gap);
+    var total = Math.max(1, Math.round((flow.scrollWidth + gap) / (colW + gap)));
+    pages = Math.max(1, Math.ceil(total / cols));
+    page = Math.round(pos * (pages - 1));
+    show();
+  }
+  function show() {
+    flow.style.transform = 'translateX(' + (-page * step) + 'px)';
+    var a = page * cols + 1, b = (page + 1) * cols;
+    $('pos').textContent = (cols === 2 ? a + '\u2013' + b : a) + ' / ' + pages * cols;
+    seek.max = Math.max(0, pages - 1); seek.value = page;
+    $('prev').disabled = page === 0; $('next').disabled = page >= pages - 1;
+  }
+  function setPage(p) {
+    p = Math.max(0, Math.min(pages - 1, p));
+    if (p === page) return;
+    page = p; pos = pages > 1 ? page / (pages - 1) : 0;
+    store(key, pos); show();
+  }
 
-  document.querySelectorAll('.service-card, .step, .plan, .cab-feat-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(12px)';
-    el.style.transition = 'opacity .25s ease-out, transform .25s ease-out';
-    observer.observe(el);
+  function load(text, name, restore) {
+    raw = text; flow.innerHTML = md(text);
+    var h1 = flow.querySelector('h1');
+    var firstLine = text.trim().split('\n')[0].replace(/^#+\s*/, '').replace(/\.$/, '').trim();
+    var title = name || (firstLine ? firstLine : (h1 ? h1.textContent : 'Война и тайная любовь'));
+    document.title = title; $('name').textContent = title;
+    key = 'book-pos:' + title;
+    pos = restore ? (parseFloat(fetchv(key)) || 0) : 0;
+    layout();
+  }
+
+  // ---------- управление ----------
+  $('next').onclick = function () { setPage(page + 1); };
+  $('prev').onclick = function () { setPage(page - 1); };
+  book.addEventListener('click', function (e) {
+    var r = book.getBoundingClientRect(); setPage(page + (e.clientX > r.left + r.width / 2 ? 1 : -1));
   });
+  document.addEventListener('keydown', function (e) {
+    if (e.target === seek) return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); setPage(page + 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); setPage(page - 1); }
+    else if (e.key === 'Home') setPage(0);
+    else if (e.key === 'End') setPage(pages - 1);
+  });
+  seek.oninput = function () { setPage(parseInt(seek.value, 10)); };
+  var sx = null;
+  book.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
+  book.addEventListener('touchend', function (e) {
+    if (sx === null) return;
+    var dx = e.changedTouches[0].clientX - sx; sx = null;
+    if (Math.abs(dx) > 40) { setPage(page + (dx < 0 ? 1 : -1)); e.preventDefault(); }
+  });
+
+  function setFs(v) { fs = Math.max(0.8, Math.min(1.5, v)); store('book-fs', fs); layout(); }
+  $('fm').onclick = function () { setFs(fs - 0.08); };
+  $('fp').onclick = function () { setFs(fs + 0.08); };
+  $('th').onclick = function () { ti = (ti + 1) % themes.length; document.body.dataset.t = themes[ti]; store('book-theme', themes[ti]); };
+
+  function readFile(f) { if (f) f.text().then(function (t) { load(t, f.name.replace(/\.\w+$/, ''), false); }); }
+  $('open').onclick = function () { $('file').click(); };
+  $('file').onchange = function () { readFile(this.files[0]); this.value = ''; };
+  ['dragenter', 'dragover'].forEach(function (ev) { document.addEventListener(ev, function (e) { e.preventDefault(); document.body.classList.add('drag'); }); });
+  ['dragleave', 'drop'].forEach(function (ev) { document.addEventListener(ev, function (e) { e.preventDefault(); document.body.classList.remove('drag'); }); });
+  document.addEventListener('drop', function (e) { readFile(e.dataTransfer.files[0]); });
+
+  var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(layout, 120); });
+  // Сначала пробуем подгрузить book.md из той же папки (работает на GitHub Pages / любом сервере).
+  // Если файла нет или страница открыта локально с диска, показываем текст, вшитый в этот HTML.
+  var ready = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+  ready.then(function () {
+    return fetch('book.md').then(function (r) { if (!r.ok) throw 0; return r.text(); }).catch(function () { return raw; });
+  }).then(function (text) { load(text, '', true); });
+})();
 </script>
 </body>
 </html>
