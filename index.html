@@ -47,8 +47,10 @@
   .flow h1 + p, .flow h2 + p, .flow h3 + p, .flow hr + p, .flow blockquote + p { text-indent:0; }
   .flow blockquote { margin:.9em 0; padding-left:1em; border-left:2px solid var(--line); font-style:italic; break-inside:avoid; }
   .flow ul, .flow ol { margin:.8em 0; padding-left:1.3em; }
-  .flow hr { border:0; text-align:center; margin:1.1em 0; }
-  .flow hr::after { content:"\2726"; color:var(--muted); font-size:.85em; }
+  .flow figure { margin:1.2em 0; text-align:center; break-inside:avoid; }
+  .flow img { max-width:100%; max-height:50vh; height:auto; border-radius:4px; display:block; margin:0 auto; box-shadow:0 4px 16px rgba(0,0,0,.2); }
+  .flow figcaption { font-size:0.85em; font-style:italic; color:var(--muted); margin-top:0.4em; text-align:center; }
+  .flow figure + p { text-indent:0; text-align:center; font-size:0.85em; font-style:italic; color:var(--muted); margin-top:0.3em; margin-bottom:1.2em; }
   .flow code { font-family:ui-monospace,Menlo,monospace; font-size:.88em; background:var(--line); padding:0 .25em; border-radius:3px; }
 
   .foot { width:100%; max-width:560px; padding:6px 20px calc(10px + env(safe-area-inset-bottom)); text-align:center; font:12.5px system-ui,sans-serif; color:var(--muted); }
@@ -126,6 +128,7 @@
   function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
   function inline(s) {
     return esc(s)
+      .replace(/!\[(.*?)\]\((.*?)\)/g, '<img src="$2" alt="$1">')
       .replace(/`([^`]+)`/g, '<code>$1</code>')
       .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
       .replace(/(^|[^*\w])\*([^*\n]+)\*/g, '$1<em>$2</em>')
@@ -140,6 +143,12 @@
     src.replace(/\r\n?/g, '\n').split('\n').forEach(function (line) {
       var m;
       if (!line.trim()) { flush(); return; }
+      if ((m = line.match(/^!\[(.*?)\]\((.*?)\)$/))) {
+        flush();
+        var alt = m[1], isrc = m[2].trim();
+        out.push('<figure><img src="' + esc(isrc) + '" alt="' + esc(alt) + '"></figure>');
+        return;
+      }
       if ((m = line.match(/^(#{1,3})\s+(.*)$/))) { flush(); out.push('<h' + m[1].length + '>' + inline(m[2]) + '</h' + m[1].length + '>'); return; }
       if (/^\s*([-*_])\1{2,}\s*$/.test(line)) { flush(); out.push('<hr>'); return; }
       if ((m = line.match(/^>\s?(.*)$/))) { flushP(); flushL(); quote.push(m[1]); return; }
@@ -203,6 +212,12 @@
     key = 'book-pos:' + title;
     pos = restore ? (parseFloat(fetchv(key)) || 0) : 0;
     layout();
+    var imgs = flow.querySelectorAll('img');
+    for (var i = 0; i < imgs.length; i++) {
+      if (!imgs[i].complete) {
+        imgs[i].onload = imgs[i].onerror = function () { layout(); };
+      }
+    }
   }
 
   // ---------- управление ----------
