@@ -38,19 +38,20 @@
   .flow { column-fill:auto; line-height:1.55; text-align:justify; hyphens:auto; -webkit-hyphens:auto; text-wrap:pretty; transition:transform .28s cubic-bezier(.3,.7,.2,1); }
   @media (prefers-reduced-motion:reduce) { .flow { transition:none; } }
 
-  .flow h1 { font-size:1.55em; line-height:1.25; font-weight:normal; text-align:center; hyphens:manual; margin:0 0 1.1em; padding-top:3em; break-before:column; }
+  .flow h1 { font-size:1.55em; line-height:1.25; font-weight:normal; text-align:center; hyphens:manual; margin:0 0 .5em; padding-top:.8em; break-before:column; }
   .flow h1:first-child { break-before:auto; }
-  .flow h1::after { content:""; display:block; width:2.2em; height:1px; background:var(--muted); margin:.9em auto 0; }
+  .flow h1::after { content:""; display:block; width:2.2em; height:1px; background:var(--muted); margin:.5em auto 0; }
   .flow h2 { font-size:1.2em; font-weight:normal; text-align:center; margin:1.6em 0 .7em; break-after:avoid; }
   .flow h3 { font-size:1em; font-style:italic; font-weight:normal; margin:1.3em 0 .4em; break-after:avoid; }
   .flow p { margin:0; text-indent:1.25em; orphans:2; widows:2; }
   .flow h1 + p, .flow h2 + p, .flow h3 + p, .flow hr + p, .flow blockquote + p { text-indent:0; }
   .flow blockquote { margin:.9em 0; padding-left:1em; border-left:2px solid var(--line); font-style:italic; break-inside:avoid; }
   .flow ul, .flow ol { margin:.8em 0; padding-left:1.3em; }
-  .flow figure { margin:1.2em 0; text-align:center; break-inside:avoid; }
-  .flow img { max-width:100%; max-height:50vh; height:auto; border-radius:4px; display:block; margin:0 auto; box-shadow:0 4px 16px rgba(0,0,0,.2); }
-  .flow figcaption { font-size:0.85em; font-style:italic; color:var(--muted); margin-top:0.4em; text-align:center; }
-  .flow figure + p { text-indent:0; text-align:center; font-size:0.85em; font-style:italic; color:var(--muted); margin-top:0.3em; margin-bottom:1.2em; }
+  .flow figure { margin:.6em 0 .2em; text-align:center; break-inside:avoid; }
+  .flow img { max-width:100%; max-height:min(38vh, 290px); height:auto; border-radius:4px; display:block; margin:0 auto; box-shadow:0 4px 16px rgba(0,0,0,.2); }
+  .flow figcaption { font-size:0.85em; font-style:italic; color:var(--muted); margin-top:0.3em; text-align:center; }
+  .flow figure + p { text-indent:0; text-align:center; font-size:0.82em; font-style:italic; color:var(--muted); margin-top:0.2em; margin-bottom:.6em; }
+  .flow figure + p + p { break-before:column; }
   .flow code { font-family:ui-monospace,Menlo,monospace; font-size:.88em; background:var(--line); padding:0 .25em; border-radius:3px; }
 
   .foot { width:100%; max-width:560px; padding:6px 20px calc(10px + env(safe-area-inset-bottom)); text-align:center; font:12.5px system-ui,sans-serif; color:var(--muted); }
